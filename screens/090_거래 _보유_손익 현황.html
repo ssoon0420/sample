@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거래 /보유/손익 현황 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="089_%EA%B1%B0%EB%9E%98%20_%EB%B3%B4%EC%9C%A0_%EA%B3%84%EC%A2%8C%EB%B3%80%EA%B2%BD.html" title="거래 /보유/계좌변경">‹ 이전</a>
+    <span>90 / 148</span>
+    <a href="091_%EA%B1%B0%EB%9E%98_%EB%B3%B4%EC%9C%A0_%EA%B1%B0%EB%9E%98%20%ED%95%9C%EB%8F%84.html" title="거래/보유/거래 한도">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>거래 /보유/손익 현황</h1>
+  <p class="path">거래 / 보유 / 손익 현황</p>
+  <div class="badges">
+    <span class="badge editing">편집중</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/090_%EA%B1%B0%EB%9E%98%20_%EB%B3%B4%EC%9C%A0_%EC%86%90%EC%9D%B5%20%ED%98%84%ED%99%A9.png" alt="거래 /보유/손익 현황">
+        <button type="button" class="pin" data-n="1" style="left:75.12%;top:79.43%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:100%;top:92.73%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:100%;top:100%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:100%;top:100%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:100%;top:100%" aria-label="5번 기능정의">5</button><button type="button" class="pin ai" data-n="6" style="left:4.44%;top:3.3%" aria-label="6번 기능정의">6</button><button type="button" class="pin ai" data-n="7" style="left:11.07%;top:8.6%" aria-label="7번 기능정의">7</button><button type="button" class="pin ai" data-n="8" style="left:31.71%;top:8.6%" aria-label="8번 기능정의">8</button><button type="button" class="pin ai" data-n="9" style="left:52.86%;top:8.6%" aria-label="9번 기능정의">9</button><button type="button" class="pin ai" data-n="10" style="left:49.33%;top:17.5%" aria-label="10번 기능정의">10</button><button type="button" class="pin ai" data-n="11" style="left:20.09%;top:27.4%" aria-label="11번 기능정의">11</button><button type="button" class="pin ai" data-n="12" style="left:89.25%;top:27.4%" aria-label="12번 기능정의">12</button><button type="button" class="pin ai" data-n="13" style="left:49.33%;top:47.5%" aria-label="13번 기능정의">13</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>13개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>기간 + &#39;2026년 총 손익&#39; 뱃지 + 필터</h3></div>
+        <p class="desc">- 상단에 연도별 합계 뱃지(예: &#39;2026년 총 손익&#39;)와 별도로 기간 드롭다운(최대 1년)·필터가 있다
+- 필터로 기간과 수익 구분(전체·확정수익·분배금) 중 1개를 선택</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>분배금 카드 (라벨: 분배금)</h3></div>
+        <p class="desc">- 날짜 + 우측 &#39;분배금&#39; 라벨, 가게·종목명, 금액
+- 세금 표시 없이 세전 금액만 보여준다(하단 별도 안내)</p>
+        <p class="policy">이용약관 제16조 3항 및 소득세법 개정(2025.7.1 시행 — 분배소득으로 명칭 변경): 투자한 종목의 매출을 바탕으로 산정된 분배금은 종목별 정책에 따라 월·분기·연 단위로 지급되며, 세금은 증권사 정책에 따라 처리된다.</p>
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>매매손익 카드 (문서상 &#39;확정수익&#39; 라벨과 명칭 차이)</h3></div>
+        <p class="desc">- 날짜 + 우측 &#39;매매손익&#39; 라벨, 금액이 양수(빨강)로 표시
+- 참고 문서(33-trade-history.md)는 이 항목을 &#39;확정수익&#39;이라 지칭하여 실제 화면 라벨과 차이가 있다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>매매손익 카드 (음수/손실)</h3></div>
+        <p class="desc">- 손실은 파랑으로 표시되고 금액 앞에 &#39;-&#39; 부호가 붙는다(한국 금융 관습: 상승·이익=빨강, 하락·손실=파랑)
+- 목록은 확정수익+분배수익을 합쳐 최신순, 페이징 없음(전량 조회)</p>
+        <p class="policy">이용약관 제14조: 플랫폼에 표시되는 수익률과 평가금액은 이동평균법(평균 매입단가) 기준의 참고 수치이며 소수점 이하를 절삭하여 표시하므로 실제 정산 금액과 차이가 발생할 수 있다.</p>
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>빈 상태 · 세금 안내</h3></div>
+        <p class="desc">- 수익 내역이 없으면 &#39;수익 내역이 없어요.&#39; 안내
+- 화면 하단에 &#39;실제 받는 금액은 세금이 제외된 금액이에요.…연동 증권사 앱에서 확인&#39; 안내 문구가 표시된다(세전 금액만 노출)</p>
+        <p class="policy">이용약관 제16조 2항: 판매 수익과 분배금에 대한 세금은 증권사 정책에 따라 처리되며, 플랫폼은 원천징수 여부를 직접 확인할 수 없다.</p>
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num ai">6</span><h3>뒤로가기 버튼</h3></div>
+        <p class="desc">- 좌상단 화살표 아이콘 버튼
+- 탭하면 이전 화면(가게/종목 상세 등 진입 전 화면)으로 복귀
+- href 미검출 — 앱 내 스택 네비게이션의 동적 뒤로가기 동작으로 추정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-7" data-n="7">
+        <div class="spec-head"><span class="num ai">7</span><h3>주문내역 탭</h3></div>
+        <p class="desc">- 상단 3개 세그먼트 탭 중 첫 번째
+- 탭하면 &#39;주문내역&#39; 화면으로 전환되어 미체결/부분체결/체결완료/취소 상태의 주문 목록을 확인
+- 비로그인 상태에서 접근 시 로그인 안내가 뜨고 탭이 열리지 않을 수 있음 (참고 문서 04-myorders.md 진입 게이트 기준)
+- 계좌 미연결 상태에서는 계좌 연결 안내가 표시될 수 있음</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-8" data-n="8">
+        <div class="spec-head"><span class="num ai">8</span><h3>나의 수익 탭 (현재 선택됨)</h3></div>
+        <p class="desc">- 상단 3개 세그먼트 탭 중 두 번째, 현재 활성(진하게 강조된) 상태
+- 현재 화면이 바로 이 탭으로, 확정 수익·분배 수익 요약과 기간별 수익 내역 목록을 보여줌
+- 재탭 시 화면 새로고침(맨 위로 스크롤 등)이 발생할 수 있음 (동적 동작으로 추정)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-9" data-n="9">
+        <div class="spec-head"><span class="num ai">9</span><h3>거래 한도 탭</h3></div>
+        <p class="desc">- 상단 3개 세그먼트 탭 중 세 번째
+- 탭하면 &#39;거래 한도&#39; 화면으로 이동, 회원 등급별 보유 한도·연간거래 한도·1일 회전율 현황을 확인 가능
+- href 미검출 — 세그먼트 전환은 클라이언트 사이드 동적 처리로 추정</p>
+        <p class="policy">일반회원 보유한도 1,000만원/연간거래한도 4,000만원, 소득적격회원 보유한도 3,000만원/연간거래한도 8,000만원, 1일 회전율 100% 이하(초과 시 다음 영업일부터 거래 가능) — 약관 제10조 한도 기준표 근거</p>
+      </article>
+      
+      <article class="spec" id="spec-10" data-n="10">
+        <div class="spec-head"><span class="num ai">10</span><h3>수익 요약 카드</h3></div>
+        <p class="desc">- &#39;한국ST거래증권&#39; 계좌관리기관 배지 + &#39;2026년&#39; 연도 배지 표시
+- 확정 수익(세전): 3,795원 — 체결 완료된 판매 거래에서 발생한 세전 손익 합계로 추정
+- 분배 수익: 0원 — 보유 종목의 분배금 누적 지급액으로 추정, 현재 미지급
+- 배지 탭 시 계좌사 변경 또는 연도 변경 동작이 있을 수 있음 (href 미검출, 동적 동작 추정)</p>
+        <p class="policy">플랫폼에 표시되는 수익률·평가금액은 이동평균법(평균 매입단가) 기준의 참고 수치이며 소수점 이하 절삭 표시로 실제 정산 금액과 차이가 발생할 수 있음. 세금(분배소득 등) 계산 및 원천징수는 증권사 정책에 따라 별도 처리됨 (약관 제14조, 제16조)</p>
+      </article>
+      
+      <article class="spec" id="spec-11" data-n="11">
+        <div class="spec-head"><span class="num ai">11</span><h3>조회 기간 선택 버튼</h3></div>
+        <p class="desc">- &#39;2026.08 ~ 2026.09&#39; 형식으로 현재 조회 중인 기간을 표시, 우측 역삼각형 아이콘
+- 탭하면 연/월 선택 바텀시트가 열림 (‹›로 연도 이동, 1월~12월 버튼으로 월 선택, 하단 [취소]/[적용] 버튼으로 확정 또는 닫기)
+- [적용] 선택 시 선택한 기간 기준으로 수익 내역 목록이 다시 조회되어 표시
+- [취소] 또는 [닫기] 선택 시 변경 없이 바텀시트만 닫힘
+- href 미검출 — 모든 상호작용은 클라이언트 상태 변경으로 추정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-12" data-n="12">
+        <div class="spec-head"><span class="num ai">12</span><h3>필터 버튼</h3></div>
+        <p class="desc">- 우상단 &#39;필터&#39; 아이콘 버튼
+- 탭하면 필터 옵션(구매/판매 구분, 상태 등으로 추정)을 선택하는 바텀시트가 열릴 것으로 보임
+- 선택 적용 시 하단 수익 내역 목록이 필터 조건에 맞게 재조회될 것으로 추정
+- href 미검출 — 정확한 필터 항목 구성은 화면만으로 단정 불가</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-13" data-n="13">
+        <div class="spec-head"><span class="num ai">13</span><h3>수익 내역 리스트 (로딩 중)</h3></div>
+        <p class="desc">- 선택한 기간(2026.08~2026.09) 동안의 개별 수익 내역을 카드 형태로 나열
+- 현재 스크린샷은 데이터 로딩 중인 스켈레톤(회색 placeholder) 상태로, 실제로는 종목 썸네일 이미지·종목명·거래일자·수익금액 등이 표시될 것으로 추정
+- 각 카드 우측의 알약형 배지는 수익/손실 여부 또는 상태(예: 확정/분배) 표시로 추정
+- 카드 탭 시 해당 거래의 상세 내역 팝업 또는 화면으로 이동할 것으로 추정
+- href 미검출 — 목록 항목 동작은 화면만으로 단정 불가</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MY/정보설정 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="107_MY_%EB%82%B4%20%ED%88%AC%EC%9E%90%EC%84%B1%ED%96%A5_%EC%8B%A4%EC%8B%9C%206.html" title="MY/내 투자성향_실시 6">‹ 이전</a>
+    <span>108 / 148</span>
+    <a href="109_MY_%EC%A0%95%EB%B3%B4%EC%84%A4%EC%A0%95_%ED%9A%8C%EC%9B%90%ED%83%88%ED%87%B4_%ED%9A%8C%EC%9B%90%20%EC%83%81%ED%83%9C.html" title="MY/정보설정/회원탈퇴/회원 상태">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>MY/정보설정</h1>
+  <p class="path">MY / 설정 / 정보설정</p>
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/108_MY_%EC%A0%95%EB%B3%B4%EC%84%A4%EC%A0%95.png" alt="MY/정보설정">
+        <button type="button" class="pin" data-n="1" style="left:95.1%;top:18.76%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:95.1%;top:43.62%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:95.1%;top:70.54%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:95.1%;top:78.52%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:95.1%;top:85.46%" aria-label="5번 기능정의">5</button><button type="button" class="pin" data-n="6" style="left:95.1%;top:90.71%" aria-label="6번 기능정의">6</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>6개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>로그인 방식 설정 — 간편인증 / 생체인증 토글</h3></div>
+        <p class="desc">- 간편인증 로그인: 등록 전이면 &#39;등록&#39; 배지(등록 후에는 &#39;수정&#39;). 토글 ON 시 토스트 &#39;본인인증 후 새 PIN을 등록합니다.&#39; → 본인인증(MOK, 로그인 계정과 일치 확인) → 보안 키패드 2회 입력 → 등록 성공 시 토글 ON + &#39;간편인증이 등록되었어요.&#39;
+- 생체 인증 로그인: ON 시 기기에 생체 미등록이면 사유 토스트와 함께 토글이 원복되고, 앱에 미등록이면 생체 등록 화면으로 이동
+- 두 토글은 상호배타 — 한쪽을 켜면 다른 쪽이 자동으로 꺼진다. OFF는 서버의 PIN을 삭제하는 것이 아니라 &#39;기본(아이디/비밀번호) 방식으로 되돌리기&#39;일 뿐이다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>알림 설정 — 커뮤니티 / 새로운소식 / 고객지원</h3></div>
+        <p class="desc">- 커뮤니티(보유·관심종목 새 글) / 새로운소식(공지·상장정보) / 고객지원(1:1 문의 답변) — 토글 즉시 서버 저장, 실패 시 원복
+- 이벤트 알림 행은 발송 채널 미구현으로 임시 비노출(서버 필드는 유지되어 과거에 켜둔 계정은 값이 남아 있다)
+- 주문·보안 등 필수 안내는 이 설정과 무관하게 항상 자동 발송된다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>위치 (선택)</h3></div>
+        <p class="desc">- OS 위치 권한을 그대로 비추는 토글 — 앱에서 끄는 것은 불가(&#39;위치 권한은 기기 설정에서 해제할 수 있어요.&#39; 안내)
+- 영구 거부 상태면 [기기 설정] 칩이 나타나 OS 설정으로 이동시킨다. 화면에 복귀할 때마다 권한을 재확인한다
+- PC 브라우저에서는 위치 조회가 항상 &#39;미지원&#39; 취급되어 토글이 정상 동작하지 않는다(실기기 전용 기능)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>해외 이용 잠금 여부</h3></div>
+        <p class="desc">- 서버 저장 토글, 실패 시 원복 + &#39;해외 이용 설정 변경에 실패했어요.&#39; 안내
+- 라벨(&#39;잠금 여부&#39;)과 설명 문구(&#39;해외에서 주문·거래가 가능하도록 허용해요&#39;)의 방향이 반대로 읽히는 알려진 제약(U-27) — ON이 &#39;잠금&#39;인지 &#39;허용&#39;인지 헷갈리기 쉽다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>로그아웃</h3></div>
+        <p class="desc">- 확인 팝업 없이 즉시 로그아웃되고 토스트 &#39;로그아웃 후 홈으로 이동되요.&#39; 후 홈으로 이동한다(알려진 제약 U-30 — 오탭 시 바로 로그아웃됨)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num">6</span><h3>회원탈퇴</h3></div>
+        <p class="desc">- 탭하면 회원 상태 확인 화면(/auth/withdraw)으로 이동한다</p>
+        <p class="policy">회원은 언제든지 앱에서 탈퇴를 신청할 수 있으며, 회사는 관련 법령에 특별한 제한이 없는 한 즉시 처리한다(이용약관 제7조①).</p>
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

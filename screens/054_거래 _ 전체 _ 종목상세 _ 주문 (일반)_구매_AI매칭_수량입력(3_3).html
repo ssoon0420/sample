@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거래 / 전체 / 종목상세 / 주문 (일반)/구매/AI매칭_수량입력(3/3) · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="053_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A3%BC%EB%AC%B8%20%28%EC%9D%BC%EB%B0%98%29_%EA%B5%AC%EB%A7%A4_AI%EB%A7%A4%EC%B9%AD_%EC%88%98%EB%9F%89%EC%9E%85%EB%A0%A5%282_3%29.html" title="거래 / 전체 / 종목상세 / 주문 (일반)/구매/AI매칭_수량입력(2/3)">‹ 이전</a>
+    <span>54 / 148</span>
+    <a href="055_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A3%BC%EB%AC%B8%20%28%EC%9D%BC%EB%B0%98%29_%EA%B5%AC%EB%A7%A4_AI%EB%A7%A4%EC%B9%AD_%EB%A7%A4%EC%B9%AD%20%EA%B0%80%EB%8A%A5%20%ED%98%B8%EA%B0%80%20%EC%97%86%EB%8A%94%20%EA%B2%BD%EC%9A%B0.html" title="거래 / 전체 / 종목상세 / 주문 (일반)/구매/AI매칭_매칭 가능 호가 없는 경우">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>거래 / 전체 / 종목상세 / 주문 (일반)/구매/AI매칭_수량입력(3/3)</h1>
+  <p class="path">거래 / 전체 / 종목상세 / 주문 (일반) &gt; 구매 &gt; AI매칭_수량입력(3/3)</p>
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/054_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A3%BC%EB%AC%B8%20%28%EC%9D%BC%EB%B0%98%29_%EA%B5%AC%EB%A7%A4_AI%EB%A7%A4%EC%B9%AD_%EC%88%98%EB%9F%89%EC%9E%85%EB%A0%A5%283_3%29.png" alt="거래 / 전체 / 종목상세 / 주문 (일반)/구매/AI매칭_수량입력(3/3)">
+        <button type="button" class="pin" data-n="1" style="left:60.11%;top:39.95%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:50.0%;top:96.48%" aria-label="2번 기능정의">2</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>2개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>수량 확정 · 주문예정내역 (접힘 유지)</h3></div>
+        <p class="desc">- 키패드가 닫히고 입력한 수량이 최종값으로 고정된 상태
+- 주문예정내역을 펼치면 실제 체결 예상 내역을 다시 확인할 수 있다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>구매하기 버튼 (활성화)</h3></div>
+        <p class="desc">- 수량 입력이 끝나면 진한 빨강으로 활성화되어 다음 단계(매칭 결과 확인)로 진행</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

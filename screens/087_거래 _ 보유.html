@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거래 / 보유 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="086_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0_%EA%B8%80%EC%93%B0%EA%B8%B0%282_2%29.html" title="거래 / 전체 / 종목상세 / 커뮤니티/글쓰기(2/2)">‹ 이전</a>
+    <span>87 / 148</span>
+    <a href="088_%EA%B1%B0%EB%9E%98%20_%EB%B3%B4%EC%9C%A0_%EC%A3%BC%EB%AC%B8%20%EB%82%B4%EC%97%AD.html" title="거래 /보유/주문 내역">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>거래 / 보유</h1>
+  
+  <div class="badges">
+    <span class="badge editing">편집중</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/087_%EA%B1%B0%EB%9E%98%20_%20%EB%B3%B4%EC%9C%A0.png" alt="거래 / 보유">
+        <button type="button" class="pin" data-n="1" style="left:52.0%;top:80.42%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:100%;top:80.42%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:100.0%;top:98.52%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:100.0%;top:100%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:100.0%;top:100%" aria-label="5번 기능정의">5</button><button type="button" class="pin ai" data-n="6" style="left:18.4%;top:9.15%" aria-label="6번 기능정의">6</button><button type="button" class="pin ai" data-n="7" style="left:83.4%;top:3.3%" aria-label="7번 기능정의">7</button><button type="button" class="pin ai" data-n="8" style="left:93.3%;top:3.3%" aria-label="8번 기능정의">8</button><button type="button" class="pin ai" data-n="9" style="left:21.6%;top:15.8%" aria-label="9번 기능정의">9</button><button type="button" class="pin ai" data-n="10" style="left:79.9%;top:15.9%" aria-label="10번 기능정의">10</button><button type="button" class="pin ai" data-n="11" style="left:49.8%;top:29.6%" aria-label="11번 기능정의">11</button><button type="button" class="pin ai" data-n="12" style="left:18.3%;top:35.7%" aria-label="12번 기능정의">12</button><button type="button" class="pin ai" data-n="13" style="left:50.0%;top:35.7%" aria-label="13번 기능정의">13</button><button type="button" class="pin ai" data-n="14" style="left:81.5%;top:35.7%" aria-label="14번 기능정의">14</button><button type="button" class="pin ai" data-n="15" style="left:57.7%;top:42.2%" aria-label="15번 기능정의">15</button><button type="button" class="pin ai" data-n="16" style="left:49.8%;top:57.5%" aria-label="16번 기능정의">16</button><button type="button" class="pin ai" data-n="17" style="left:50.0%;top:98.05%" aria-label="17번 기능정의">17</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>17개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>[현재가|평가금] 표시 전환 드롭다운</h3></div>
+        <p class="desc">- 좌측 &#39;현재가 v&#39;를 누르면 행의 금액 표시를 현재가 ↔ 평가금(현재가×보유수량)으로 전환한다
+- 평가금 모드에서는 등락 금액·등락률이 내 평균단가 대비로 바뀐다
+- 선택은 앱을 쓰는 동안 기억되며(탭 이동해도 유지), 새로고침·재시작 시 현재가로 복귀</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>정렬 — &#39;평가금 높은순&#39; + 필터</h3></div>
+        <p class="desc">- 보유 탭 전용 정렬 3종: 평가금 높은순(기본)·현재가 높은순·가나다순 — 오름차순 선택지 없음(가나다순만 예외)
+- 필터 아이콘은 부가 필터 시트 진입
+- 정렬 변경 시 목록이 처음부터 다시 그려진다(펼친 것은 접힘)
+- &#39;평가금 높은순&#39;은 보유수량 × 현재가(서버 산정) 기준으로 정렬한다(참고: 30-trade-list.md)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>보유 종목 카드 — 종목명/가게명/개당단가·수량/현재가·등락</h3></div>
+        <p class="desc">- 카드에 보유수량과 내 평균단가(수수료 미포함)가 함께 표시
+- 우측에 현재가(또는 평가금)와 등락(▲빨강/▼파랑)
+- 카드를 탭하면 종목 상세로 이동(상장폐지 종목 제외)</p>
+        <p class="policy">이용약관 제14조 2항: 수익률과 평가금액은 소수점 이하를 절삭하여 표시되므로 실제 정산 금액과 차이가 발생할 수 있다.</p>
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>상장폐지 보유 종목 처리</h3></div>
+        <p class="desc">- 상장폐지 종목(listing_status=D)은 가격 자리에 &#39;-&#39;, 그 아래 &#39;상장폐지&#39; 라벨
+- 행이 비활성화되어 눌러도 종목 상세로 진입하지 않는다 — 공시·분배 이력을 확인할 경로가 없다(알려진 제약)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>보유 0건 / 계좌 미연결 상태</h3></div>
+        <p class="desc">- 보유 종목이 없으면 &#39;보유 종목이 없어요.&#39; 안내
+- 증권계좌 미연결 회원은 이 목록 대신 &#39;투자, 이제 시작만 남았어요.&#39; + [계좌 연결하기] 전체화면 안내로 대체된다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num ai">6</span><h3>거래 하위 탭 (전체/보유/관심)</h3></div>
+        <p class="desc">- 3개 탭으로 구성된 세그먼트 메뉴이며 현재 &#39;보유&#39; 탭이 선택된 상태
+- &#39;전체&#39; 탭: 보유 종목과 관심 종목을 함께 노출
+- &#39;보유&#39; 탭: 현재 화면으로, 실제 보유 중인 종목만 노출
+- &#39;관심&#39; 탭: 찜(관심등록)한 종목만 노출
+- 각 탭 전환 시 하단 목록만 갱신되고 상단 계좌 요약 카드는 유지되는 것으로 추정
+- 로그인 및 증권사 계좌 연결이 되어 있지 않으면 탭 진입 시 안내/유도 화면이 뜰 수 있음</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-7" data-n="7">
+        <div class="spec-head"><span class="num ai">7</span><h3>프로필/계정 아이콘</h3></div>
+        <p class="desc">- 원형 아바타 버튼으로, 탭 시 마이페이지 또는 계정 관련 메뉴로 이동하는 동적 동작으로 추정
+- href 정보가 감지되지 않아 정확한 이동 경로는 미상
+- 로그인 상태를 시각적으로 표시하는 역할도 겸하는 것으로 보임</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-8" data-n="8">
+        <div class="spec-head"><span class="num ai">8</span><h3>알림 버튼</h3></div>
+        <p class="desc">- 종 모양 아이콘 버튼으로, 탭 시 알림함(체결 알림, 주문 만료 안내, 자격 갱신 안내 등)으로 이동하는 동적 동작으로 추정
+- 미확인 알림이 있을 경우 배지(뱃지)가 표시될 수 있음 (현재 화면에는 배지 미노출)
+- href 정보가 감지되지 않아 정확한 목적지는 미상</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-9" data-n="9">
+        <div class="spec-head"><span class="num ai">9</span><h3>기본 거래 계좌 안내 (한국ST거래증권)</h3></div>
+        <p class="desc">- 현재 설정된 기본 거래 계좌(연동 증권사명)를 표시하는 뱃지형 버튼
+- 옆의 (?) 아이콘 탭 시 &#39;기본 거래 계좌&#39; 용어에 대한 툴팁/설명 팝업이 뜨는 것으로 추정
+- 구매·판매 주문은 이 기본 거래 계좌로만 제출 가능
+- 여러 증권사 계좌를 연동한 경우에도 화면에는 기본 계좌 1개만 표시됨</p>
+        <p class="policy">기본 거래 계좌는 마이페이지 또는 거래 화면에서 언제든지 변경할 수 있다.</p>
+      </article>
+      
+      <article class="spec" id="spec-10" data-n="10">
+        <div class="spec-head"><span class="num ai">10</span><h3>계좌변경 버튼</h3></div>
+        <p class="desc">- 우측 상단의 &#39;계좌변경 &gt;&#39; 버튼으로, 탭 시 연동된 증권사 계좌 목록 중 기본 거래 계좌를 변경하는 화면/팝업으로 이동하는 동적 동작으로 추정
+- 변경 즉시 상단 카드의 평가금·계좌잔고·보유 목록이 새 계좌 기준으로 갱신될 것으로 예상
+- 연동된 계좌가 1개뿐인 경우 변경 옵션이 비활성화되거나 안내 문구가 뜰 수 있음 (미확인)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-11" data-n="11">
+        <div class="spec-head"><span class="num ai">11</span><h3>나의 평가금 / 계좌잔고 (주문 대기 금액 포함)</h3></div>
+        <p class="desc">- &#39;나의 평가금&#39;: 보유 종목의 현재가 기준 평가금액 합계와 손익(금액·수익률)을 표시
+- 수익률·평가금액은 플랫폼의 자체 이동평균법(평균 매입단가) 기준 참고 수치로, 소수점 이하 절삭 표시되어 실제 정산 금액과 차이가 발생할 수 있음
+- &#39;계좌잔고&#39; 옆 화살표(⌄) 탭 시 상세 내역이 펼쳐지며, 이때 &#39;주문 대기 금액&#39;(미체결 주문으로 잠긴 금액)과 실제 주문가능금액이 구분 표시되는 동적 동작으로 추정
+- 미체결 구매 주문이 있으면 해당 주문 금액+수수료만큼 잔고가 잠금(Lock) 처리되어 주문가능금액에서 제외됨</p>
+        <p class="policy">수익률과 평가금액은 참고용이며 실제 손익과 다를 수 있다. 세금 계산 및 원천징수는 증권사에서 처리한다.</p>
+      </article>
+      
+      <article class="spec" id="spec-12" data-n="12">
+        <div class="spec-head"><span class="num ai">12</span><h3>주문내역 버튼</h3></div>
+        <p class="desc">- 탭 시 주문/체결 내역 조회 화면(내주문 탭 등)으로 이동
+- 미체결, 부분체결, 체결완료, 주문취소 등 상태별 주문 목록을 확인 가능
+- 실 API 기반이며 약 5초마다 자동 갱신되는 화면으로 연결되는 것으로 추정
+- 로그인 및 계좌 연결이 되어 있지 않으면 접근 시 안내 토스트가 노출될 수 있음</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-13" data-n="13">
+        <div class="spec-head"><span class="num ai">13</span><h3>나의 수익 버튼</h3></div>
+        <p class="desc">- 탭 시 전체 보유 종목의 누적 수익률/손익 현황을 모아 보는 화면으로 이동하는 동적 동작으로 추정
+- 표시되는 수익률은 이동평균법(평균 매입단가) 기준 플랫폼 자체 계산값으로 실제 증권사 정산 금액과 차이가 있을 수 있음
+- href 정보가 감지되지 않아 정확한 목적지는 미상</p>
+        <p class="policy">수익률·평가금액은 참고용 수치이며, 판매 수익 및 분배소득에 대한 세금은 증권사 정책에 따라 처리된다.</p>
+      </article>
+      
+      <article class="spec" id="spec-14" data-n="14">
+        <div class="spec-head"><span class="num ai">14</span><h3>거래 한도 버튼</h3></div>
+        <p class="desc">- 탭 시 현재 회원 등급(일반회원/소득적격회원) 기준의 보유 한도, 연간거래 한도, 1일 회전율 사용 현황을 보여주는 화면으로 이동하는 동적 동작으로 추정
+- 한도 초과 시 신규 주문이 시스템에서 자동 거부됨을 안내하는 내용이 포함될 것으로 예상</p>
+        <p class="policy">보유 한도: 일반회원 1,000만 원 / 소득적격회원 3,000만 원. 연간거래 한도: 일반회원 4,000만 원 / 소득적격회원 8,000만 원. 1일 회전율: 등급 무관 100% 이하 (초과 시 다음 영업일부터 거래 가능).</p>
+      </article>
+      
+      <article class="spec" id="spec-15" data-n="15">
+        <div class="spec-head"><span class="num ai">15</span><h3>필터 및 정렬 (현재가/평가금)</h3></div>
+        <p class="desc">- &#39;필터&#39; 버튼: 탭 시 보유 종목 목록을 좁히는 조건(예: 가게별, 종목별 등)을 선택하는 바텀시트가 뜨는 동적 동작으로 추정
+- &#39;현재가&#39;/&#39;평가금&#39; 토글: 목록 우측에 표시되는 금액 기준을 현재가 또는 평가금(보유수량×현재가 등) 중 선택하여 전환
+- 상단의 &#39;평가금 높은순&#39;은 현재 목록 정렬 기준을 나타내는 표시로, 별도 탭 시 정렬 옵션 변경 가능성 있음 (동적 동작 추정)
+- 총 9건: 현재 필터/정렬 조건에 해당하는 보유 종목 총 개수</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-16" data-n="16">
+        <div class="spec-head"><span class="num ai">16</span><h3>보유 종목 리스트 (종목 카드)</h3></div>
+        <p class="desc">- 보유 중인 종목을 카드 형태로 나열: 가게명/종목명, 개당 평균단가 및 보유수량, 우측에 현재가와 전일대비 등락률(%) 표시
+- 카드 탭 시 해당 종목의 상세 화면(정보/호가/차트/내주문 탭 구성)으로 이동하는 동적 동작으로 추정 — 상세 화면 URL은 `/trade/{종목ID}` 형태로 유추됨
+- 등락률 0.0%는 당일 체결 내역이 없어 전일 마지막 체결가와 동일함을 의미
+- 예: &#39;노을다반 서귀포 리모델링 1호&#39; 개당 4,888원/120개 보유, 현재가 5,700원(0.0%)
+- 예: &#39;고요한상 안동 리모델링 1호&#39; 개당 4,500원/1개 보유, 현재가 600,000원(0.0%)
+- 최대 200건까지 표시되며 그 이상은 스크롤/더보기로 추가 노출되는 구조로 추정</p>
+        <p class="policy">현재가는 가장 마지막에 체결된 가격이며, 오늘 거래가 없으면 어제(또는 최근 거래일) 마지막 체결가가 표시된다.</p>
+      </article>
+      
+      <article class="spec" id="spec-17" data-n="17">
+        <div class="spec-head"><span class="num ai">17</span><h3>하단 탭 내비게이션</h3></div>
+        <p class="desc">- 홈(집 아이콘): 탭 시 홈 화면(/home)으로 이동
+- 백년가게(가게 아이콘): 탭 시 백년가게/가게 목록 화면(/stores)으로 이동 — 지도 기반 &#39;내 주변&#39; 탐색 등을 포함
+- 거래(막대그래프 아이콘, 현재 선택됨): 탭 시 거래 화면(/trade)으로 이동 — 현재 표시 중인 화면
+- MY(사람 아이콘): 탭 시 마이페이지(/my)로 이동, 계좌 관리/차단 관리 등 포함
+- 더보기(점 3개 아이콘): 탭 시 더보기 메뉴(/more)로 이동
+- 각 항목은 로그인 여부와 무관하게 노출되나, 거래·MY 등 일부 기능은 진입 후 로그인/계좌 연결이 요구될 수 있음</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

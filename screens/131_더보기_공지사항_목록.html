@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>더보기/공지사항/목록 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="130_%EB%8D%94%EB%B3%B4%EA%B8%B0%20_%20%EC%9D%B4%EB%B2%A4%ED%8A%B8%20_%20%EC%9D%B4%EB%B2%A4%ED%8A%B8%EC%83%81%EC%84%B8.html" title="더보기 / 이벤트 / 이벤트상세">‹ 이전</a>
+    <span>131 / 148</span>
+    <a href="132_%EB%8D%94%EB%B3%B4%EA%B8%B0%20_%20%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD%20_%20%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD%20%EC%83%81%EC%84%B8.html" title="더보기 / 공지사항 / 공지사항 상세">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>더보기/공지사항/목록</h1>
+  <p class="path">더보기 / 공지사항 / 목록</p>
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/131_%EB%8D%94%EB%B3%B4%EA%B8%B0_%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD_%EB%AA%A9%EB%A1%9D.png" alt="더보기/공지사항/목록">
+        <button type="button" class="pin" data-n="1" style="left:25.58%;top:3.2%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:50.7%;top:9.24%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:50.7%;top:25.25%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:50.7%;top:41.5%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:50.7%;top:86.21%" aria-label="5번 기능정의">5</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>5개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>뒤로가기</h3></div>
+        <p class="desc">- 이전 화면(더보기 메인)으로 복귀</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>공지 행 구조</h3></div>
+        <p class="desc">- &#39;[유형명] 제목&#39; 1줄 말줄임 + 노출일 + N 배지(노출일 7일 이내에만 부착) 조합으로 표시
+- 고정 공지가 최상단에 오고, 그 아래는 노출일 최신순으로 정렬된다(서버 정렬)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>신규 N배지 예시(서비스이용약관 개정 안내)</h3></div>
+        <p class="desc">- 노출일이 7일 이내인 공지에만 빨간 N 배지가 붙는다
+- 탭하면 해당 공지 상세로 이동한다</p>
+        <p class="policy">제3조(약관의 게시와 개정) ② 약관 개정 시 적용일자·개정사유를 명시해 적용일자 30일 전부터 공지 — 이 공지가 그 고지 수단</p>
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>[소식] 유형 공지</h3></div>
+        <p class="desc">- 종목 상장, 투자자 모집 시작 등 서비스 소식성 공지도 같은 목록에 함께 노출된다
+- 유형([공지]/[소식]) 구분 없이 노출일 최신순으로 섞여 정렬된다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>목록 로드 방식 및 빈 상태</h3></div>
+        <p class="desc">- 10건씩 무한 스크롤(끝에 닿으면 자동 추가)로 로드된다
+- 등록된 공지가 없으면 &#39;등록된 공지사항이 없어요.&#39; 표시
+- 조회 실패 시 &#39;공지사항을 불러오지 못했어요.&#39; + &#39;잠시 후 다시 시도해 주세요.&#39; 안내</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>더보기/소득적격투자자 신청 2 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="124_%EB%8D%94%EB%B3%B4%EA%B8%B0_%EC%86%8C%EB%93%9D%EC%A0%81%EA%B2%A9%ED%88%AC%EC%9E%90%EC%9E%90%20%EC%8B%A0%EC%B2%AD%201.html" title="더보기/소득적격투자자 신청 1">‹ 이전</a>
+    <span>125 / 148</span>
+    <a href="126_%EB%8D%94%EB%B3%B4%EA%B8%B0_%EC%86%8C%EB%93%9D%EC%A0%81%EA%B2%A9%ED%88%AC%EC%9E%90%EC%9E%90%20%EC%8B%A0%EC%B2%AD_%ED%8C%9D%EC%97%85.html" title="더보기/소득적격투자자 신청_팝업">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>더보기/소득적격투자자 신청 2</h1>
+  <p class="path">더보기/소득적격투자자 신청 1</p>
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/125_%EB%8D%94%EB%B3%B4%EA%B8%B0_%EC%86%8C%EB%93%9D%EC%A0%81%EA%B2%A9%ED%88%AC%EC%9E%90%EC%9E%90%20%EC%8B%A0%EC%B2%AD%202.png" alt="더보기/소득적격투자자 신청 2">
+        <button type="button" class="pin" data-n="1" style="left:50.13%;top:19.0%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:50.13%;top:26.0%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:50.13%;top:33.0%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:50.13%;top:50.0%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:50.13%;top:60.0%" aria-label="5번 기능정의">5</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>5개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>문서유형 선택 및 파일첨부</h3></div>
+        <p class="desc">- 드롭다운에서 문서유형 선택(예: 근로/사업소득) 후 [파일첨부] 버튼으로 증빙서류 첨부
+- 파일별로 문서유형이 개별 지정되지 않고 화면에서 선택된 유형 1개만 전송되어, 서로 다른 유형의 서류를 섞어 제출하면 서버에는 한 유형으로만 기록될 수 있음</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>첨부파일 목록</h3></div>
+        <p class="desc">- 첨부한 파일명이 목록에 표시되고 항목별로 미리보기(이미지=인앱 뷰어, PDF=새 탭)·삭제(X) 가능
+- 최대 3개까지 첨부 가능, 3개 도달 시 [파일첨부] 버튼 비활성화 + 안내 토스트</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>첨부 안내 문구</h3></div>
+        <p class="desc">- &#39;서류에 주민번호 뒷자리는 숨기고 제출해주세요&#39; 개인정보 마스킹 안내
+- &#39;사진 및 파일은 최대 3개까지 등록 가능해요&#39;
+- &#39;10MB 이내의 JPG, PNG, PDF 파일을 업로드 하실 수 있습니다&#39; — 허용 외 형식(WEBP 등) 첨부 시 &#39;첨부할 수 없는 파일이에요.&#39; 안내</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>개인정보 수집·이용 동의</h3></div>
+        <p class="desc">- 체크박스 + &#39;투자자 유형 변경 개인정보 수집 및 이용 동의 안내&#39; 링크
+- 링크 클릭 시 전문 팝업이 열리며, 팝업 내 [동의하기] 버튼을 눌러야 체크박스가 자동으로 체크됨(체크박스 직접 클릭만으로는 동의 처리되지 않음)
+- 첨부 1개 이상 + 본 동의 체크가 모두 되어야 [제출하기] 버튼이 활성화됨</p>
+        <p class="policy">제9조(회원 등급별 자격 심사 및 갱신) ① 소득적격회원이 되려면 소득 증빙서류를 제출하고 회사의 심사를 통과해야 한다 — 서류 제출에 필요한 개인정보 수집 동의 절차</p>
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>제출하기 버튼</h3></div>
+        <p class="desc">- 첨부·동의 완료 전에는 비활성 상태
+- 첨부파일 업로드 → 신청 순서로 처리되며, 업로드가 실패하면 신청 자체를 접수하지 않고 재첨부를 안내한다
+- 성공 시 &#39;소득적격투자자 신청이 완료되었어요.&#39; 안내 후 이전 화면으로 복귀
+- 이미 심사 중인 신청이 있으면 &#39;이미 심사 중인 신청이 있어요. 심사 완료 후 재신청해 주세요.&#39; 토스트로 재신청이 차단된다(화면 자체에는 심사 상태 표시가 없음)</p>
+        <p class="policy">제9조(회원 등급별 자격 심사 및 갱신) ① 심사가 승인되면 거래 한도가 자동으로 상향되고 알림이 발송된다. ② 소득적격 자격은 1년마다 갱신해야 한다. ③ 만료 30일 전 앱 알림으로 안내하며, 만료일까지 갱신 승인받지 못하면 일반회원으로 자동 전환되어 한도가 줄어든다.</p>
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

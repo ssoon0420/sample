@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홈/로그인 전 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="011_%EB%A1%9C%EA%B7%B8%EC%9D%B8_%EB%8B%A4%EB%A5%B8%EB%B0%A9%EB%B2%95%EC%9C%BC%EB%A1%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8.html" title="로그인/다른방법으로로그인">‹ 이전</a>
+    <span>12 / 148</span>
+    <a href="013_%ED%99%88_%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%ED%9B%84.html" title="홈/로그인 후">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>홈/로그인 전</h1>
+  <p class="path">홈</p>
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/012_%ED%99%88_%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%A0%84.png" alt="홈/로그인 전">
+        <button type="button" class="pin" data-n="1" style="left:77.65%;top:0.71%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:53.5%;top:3.66%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:7.9%;top:6.13%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:23.93%;top:10.55%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:16.48%;top:21.52%" aria-label="5번 기능정의">5</button><button type="button" class="pin" data-n="6" style="left:35.89%;top:40.56%" aria-label="6번 기능정의">6</button><button type="button" class="pin" data-n="7" style="left:29.8%;top:51.97%" aria-label="7번 기능정의">7</button><button type="button" class="pin" data-n="8" style="left:23.7%;top:71.01%" aria-label="8번 기능정의">8</button><button type="button" class="pin" data-n="9" style="left:26.64%;top:76.14%" aria-label="9번 기능정의">9</button><button type="button" class="pin" data-n="10" style="left:69.98%;top:91.23%" aria-label="10번 기능정의">10</button><button type="button" class="pin" data-n="11" style="left:3.61%;top:98.1%" aria-label="11번 기능정의">11</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>11개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>헤더 — 프로필칩·알림벨 (비로그인)</h3></div>
+        <p class="desc">- 좌측 로고, 우측 프로필칩·알림 벨 아이콘
+- 비로그인 상태이므로 프로필칩은 사진없이 기본 회색 아이콘으로 표시되며, 탭하면 로그인 화면으로 이동
+- 알림 벨은 노출되지만 로그인이 필요한 기능 — 비로그인 상태로 탭하면 로그인 게이트가 뜨고, 안읽음 개수 배지도 로그인 상태에서만 조회됨</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>메인 배너 </h3></div>
+        <p class="desc">- 서버가 노출 순서를 정한 배너를 좌우 스크롤로 최대 10개까지 노출(현재 페이지 인디케이터 &#39;1/2&#39;로 표시)
+- 자동 넘김 없음 — 손으로 직접 밀어야 다음 배너 표시
+- 노출 중인 배너가 0건이면 섹션 자체가 사라짐
+- 배너 탭 시 각 배너에 지정된 목적지로 이동</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>빠른 안내 카드 (백년가게란·주문방법·가디언이란·가디언혜택)</h3></div>
+        <p class="desc">- 원형 이미지 카드 4종, 이미지·위치 고정
+- 각 이미지 클릭시 해당하는 페이지로 이동</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>종목 목록 &#39;가디언 픽&#39;</h3></div>
+        <p class="desc">- 상장 종목만 조회(상장폐지 제외), 5개를 좌우 스크롤 카드로 노출
+- 의도된 정렬은 &#39;등락률 높은순&#39;으로 노출 
+- 카드 구성: 가게명·종목명·현재가·등락률·[주문]·찜(♡) 아이콘
+- 비로그인 상태라 찜(♡)은 테두리만 있는 빈 하트로 표시 — 탭하면 로그인 게이트, [주문]은 화면은 열리되 제출 시점에 로그인 요구
+- 카드 탭 → 종목 상세로 이동
+- 의도된 정렬 기준은 &#39;등락률 높은순&#39;이지만, 서버가 정렬 조건을 아직 반영하지 않아 실제로는 &#39;최근 상장순&#39;으로 노출된다(알려진 제약, 참고: 10-home.md) — 그 결과 &#39;새로운 종목&#39; 섹션과 종목이 겹쳐 보일 수 있으며 이는 버그가 아니다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>가게 홍보 &#39;지금 가장 핫한 가게&#39;</h3></div>
+        <p class="desc">- 가게 3개를 좌우 스크롤로 노출, 가게당 종목 최대 2개를 하위 목록으로 표시(서버 노출 순서)
+- 대형 이미지 카드: 가게명, 대표 문구, &#39;혜택&#39; 배지, 혜택 설명 문구, 우측 상단 스크랩(북마크) 아이콘
+- 하위 종목 행: 종목명·현재가·등락률·[주문]·찜(♡, 비로그인이라 빈 하트)
+-&gt; [주문] 클릭시 해당 종목의 상세&gt; 주문 페이지로 이동 (동일함)
+- 카드/종목 탭 → 각각 가게 상세/종목 상세로 이동</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num">6</span><h3>신규 종목 &#39;새로 올라왔어요&#39;</h3></div>
+        <p class="desc">- 최근 상장순 3개, 세로 목록. 상장 종목만 조회
+- 각 행: 가게명·종목명·현재가·등락률·[주문]·찜(♡, 비로그인이라 빈 하트)
+- 헤더 우측 [더보기] → 거래 목록이 &#39;최근 상장순&#39; 필터링된 상태로 &#39;거래&gt; 전체&#39; 목록으로 이동</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-7" data-n="7">
+        <div class="spec-head"><span class="num">7</span><h3>이벤트·혜택 </h3></div>
+        <p class="desc">- 서버 노출 순서로 최대 5개, 좌우 스크롤(자동 넘김 없음 — 손으로 밀어야 함)
+- 노출 중인 이벤트가 0건이면 섹션 자체가 사라짐
+- 카드 영역 카드 탭 → 이벤트 상세로 이동</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-8" data-n="8">
+        <div class="spec-head"><span class="num">8</span><h3>지역 카드 — &#39;내 주변 픽&#39;</h3></div>
+        <p class="desc">- 등록된 지역 수만큼 칩 노출(서울·경기·인천·강원·대전 등) 되며, 백년가게 &gt; 내 주변(전체) / 지역 칩 탭 → 백년가게 &gt; 내 주변(해당 지역 지정)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-9" data-n="9">
+        <div class="spec-head"><span class="num">9</span><h3>백년라운지</h3></div>
+        <p class="desc">- 가게 3개, 가게당 최신 글 3개(최신순) — 라운지 글이 0건이면 섹션 전체가 사라짐
+- 카드 구성: 가게명(고요한상 등)·최신 글 미리보기·[더보기]
+- [더보기] 버튼 클릭-&gt; 백년가게&gt; 가게상세&gt; 커뮤니티 목록 이동
+- 글 미리보기 탭 → 그 종목의 커뮤니티로 이동 / 가게명 탭 → 그 가게 상세의 커뮤니티 탭으로 이동(서로 다른 목적지이므로 구분 필요)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-10" data-n="10">
+        <div class="spec-head"><span class="num">10</span><h3>공지 띠 + 푸터</h3></div>
+        <p class="desc">- 공지 띠: 최신 공지 1건만 노출(예: &#39;[공지][필수] 투자자 성향 분석 필수 안내&#39;), 공지가 0건이면 섹션이 사라짐 — 탭 시 공지 상세로 이동
+- 하단 푸터: 서비스 고지 문구(&#39;정보는 투자 참고용이며 실제와 차이가 있을 수 있고, 투자 결과의 법적 책임은 사용자에게 귀속&#39;), [투자자 유의안내]·[개인정보처리방침]·[고객센터] 링크</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-11" data-n="11">
+        <div class="spec-head"><span class="num">11</span><h3>네비게이션 바</h3></div>
+        <p class="desc">- BottomNav(홈/백년가게/거래/MY/더보기) — 구성은 로그인 상태와 무관하게 5개 탭으로 동일하게 노출됨
+- 참고
+https://docs.google.com/spreadsheets/d/1fa8sG1Eb9tx7mB9CSHXREZesiIDnNWuP/edit?gid=443744823#gid=443744823</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

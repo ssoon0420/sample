@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>더보기/목록 (메인) · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="126_%EB%8D%94%EB%B3%B4%EA%B8%B0_%EC%86%8C%EB%93%9D%EC%A0%81%EA%B2%A9%ED%88%AC%EC%9E%90%EC%9E%90%20%EC%8B%A0%EC%B2%AD_%ED%8C%9D%EC%97%85.html" title="더보기/소득적격투자자 신청_팝업">‹ 이전</a>
+    <span>127 / 148</span>
+    <a href="128_%EB%8D%94%EB%B3%B4%EA%B8%B0%20_%EC%9D%B4%EC%9A%A9%EC%95%88%EB%82%B4.html" title="더보기 /이용안내">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>더보기/목록 (메인)</h1>
+  <p class="path">더보기 / 목록 (메인)</p>
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/127_%EB%8D%94%EB%B3%B4%EA%B8%B0_%EB%AA%A9%EB%A1%9D%20%28%EB%A9%94%EC%9D%B8%29.png" alt="더보기/목록 (메인)">
+        <button type="button" class="pin" data-n="1" style="left:50.67%;top:3.22%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:50.67%;top:20.11%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:50.67%;top:42.87%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:50.67%;top:56.21%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:50.67%;top:68.28%" aria-label="5번 기능정의">5</button><button type="button" class="pin" data-n="6" style="left:50.67%;top:74.94%" aria-label="6번 기능정의">6</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>6개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>헤더(프로필칩·알림벨)</h3></div>
+        <p class="desc">- 좌측 &#39;더보기&#39; 타이틀, 우측 프로필칩(비로그인 시 [로그인] 유도/로그인 시 프로필 이니셜)과 알림 벨 아이콘
+- 프로필칩 탭: 비로그인은 로그인 화면으로, 로그인 상태는 MY 화면으로 이동</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>메뉴 그룹1 — 이용안내/이벤트/공지사항/고객센터</h3></div>
+        <p class="desc">- 4개 행 모두 로그인 불필요(단, 고객센터 내 1:1 문의만 로그인 필요)
+- 이용안내: /more/guide (전 탭 준비 중)
+- 이벤트: /more/event
+- 공지사항: /more/notice
+- 고객센터: /more/customer-service</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>메뉴 그룹2 — 투자자 유의사항/소득적격투자자 신청</h3></div>
+        <p class="desc">- 구분선 아래 배치
+- 투자자 유의사항: 약관 화면(유의사항 유형)으로 이동, 로그인 불필요
+- 소득적격투자자 신청: 로그인 필요 — 비로그인 상태로 탭하면 로그인 안내 토스트가 뜨고 이동하지 않는다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>메뉴 그룹3 — 정책/회사소개</h3></div>
+        <p class="desc">- 정책: /more/policy (정책 목록 4종)
+- 회사소개: 외부 사이트(krste.co.kr) 연결 — 시스템 인앱 브라우저(주소창 보임)로 앱 위에 덮여 열리며 앱을 벗어나지 않음(PC는 새 탭). 좌상단 완료 버튼으로 앱 복귀</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>앱버전 행</h3></div>
+        <p class="desc">- 이동 없이 &#39;현재 버전정보 {버전}&#39; 표시, chevron 없음
+- 개발 빌드에서만 버전 뒤 &#39;DEV&#39; 표기와 서버 상태 점(녹색=서버 정상/빨강=서버 응답 없음, 진입 시 1회 조회)이 노출되며, 운영 빌드에는 표시되지 않는다
+- 개발 빌드에서만 행을 3연타하면 개발 설정 화면 진입(운영 빌드는 무반응)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num">6</span><h3>하단 로고·법적고지 배너</h3></div>
+        <p class="desc">- 한국ST거래 로고 + &#39;한국ST거래의 정보는 투자 참고용이며, 서비스 내 모든 정보는 실제와 차이가 있을 수 있습니다. 투자 결과에 대한 법적 책임은 사용자에게 귀속됩니다.&#39; 면책 문구
+- 기획 문서 기준 하단에 투자자 유의안내/개인정보처리방침/고객센터로 가는 푸터 링크 3개가 함께 배치된다</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>회원가입 / 로그인설정 (생체) · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="008_%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20_%20%EA%B0%80%EC%9E%85%EC%99%84%EB%A3%8C.html" title="회원가입 / 가입완료">‹ 이전</a>
+    <span>9 / 148</span>
+    <a href="010_%EB%A1%9C%EA%B7%B8%EC%9D%B8.html" title="로그인">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>회원가입 / 로그인설정 (생체)</h1>
+  
+  <div class="badges">
+    <span class="badge editing">편집중</span>
+    
+    
+    
+    
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/009_%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20_%20%EB%A1%9C%EA%B7%B8%EC%9D%B8%EC%84%A4%EC%A0%95%20%28%EC%83%9D%EC%B2%B4%29.png" alt="회원가입 / 로그인설정 (생체)">
+        <button type="button" class="pin ai" data-n="1" style="left:3.56%;top:3.3%" aria-label="1번 기능정의">1</button><button type="button" class="pin ai" data-n="2" style="left:50.48%;top:11.5%" aria-label="2번 기능정의">2</button><button type="button" class="pin ai" data-n="3" style="left:50.48%;top:23.5%" aria-label="3번 기능정의">3</button><button type="button" class="pin ai" data-n="4" style="left:50.48%;top:28.0%" aria-label="4번 기능정의">4</button><button type="button" class="pin ai" data-n="5" style="left:16.5%;top:96.5%" aria-label="5번 기능정의">5</button><button type="button" class="pin ai" data-n="6" style="left:65.58%;top:96.5%" aria-label="6번 기능정의">6</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>6개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num ai">1</span><h3>뒤로가기</h3></div>
+        <p class="desc">- 좌상단 화살표 아이콘 버튼
+- 탭 시 이전 화면(직전 가입 단계)으로 돌아감
+- 화면에서 감지된 링크/버튼 목록에 해당 요소가 없어 실제 이동 대상은 스크린샷상 추정이며 단정할 수 없음</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num ai">2</span><h3>간편 로그인 설정 안내 타이틀</h3></div>
+        <p class="desc">- &#34;로그인, 더 쉽게 할 수 있어요. 간편 로그인 방식을 설정해주세요.&#34; 문구
+- 회원가입 절차 중 로그인 방식(간편 인증) 설정을 유도하는 안내 텍스트
+- 별도의 클릭/입력 동작 없는 정보성 텍스트</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num ai">3</span><h3>간편 인증으로 로그인 선택 박스</h3></div>
+        <p class="desc">- 좌측에 잠금/인증 아이콘(****)과 &#34;간편 인증으로 로그인&#34; 라벨이 있는 선택형 박스(현재 진한 테두리로 선택된 상태로 보임)
+- 탭 시 간편 비밀번호(PIN) 또는 생체인증(지문·안면) 등 간편 인증 수단 등록 절차로 진입할 것으로 추정됨
+- 화면에서 감지된 링크/버튼 목록에 해당 요소가 없어 실제 이동 대상(href)은 확인되지 않으며 스크린샷 기반 추정임
+- 자본시장법 제5조에 따르면 로그인 방식은 아이디/비밀번호, 간편 비밀번호(PIN), 생체인증 3가지로 구분됨 — 이 화면은 그중 간편 인증 방식 설정 단계로 보임</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num ai">4</span><h3>로그인 방식 변경 안내 문구</h3></div>
+        <p class="desc">- &#34;※ 로그인 방식은 마이 &gt; 설정에서 언제든 바꿀 수 있어요.&#34; 안내 텍스트
+- 별도 클릭 동작 없는 정책 고지성 문구로 추정됨(밑줄·색상 등 링크 스타일 미확인)
+- 감지된 링크 목록에 없어 실제로 탭 가능한 요소인지는 단정할 수 없음</p>
+        <p class="policy">로그인 방식은 가입 이후에도 마이페이지 &gt; 설정 메뉴에서 언제든지 변경 가능함을 고지</p>
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num ai">5</span><h3>취소 버튼</h3></div>
+        <p class="desc">- 하단 좌측 보조 버튼(흰 배경)
+- 탭 시 간편 로그인 설정을 건너뛰고 이전 화면 또는 다음 가입 단계로 이동할 것으로 추정(스크린샷만으로 정확한 이동 대상 단정 불가)
+- 감지된 링크/버튼 목록에 항목이 없어 실제 동작은 확인되지 않음</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num ai">6</span><h3>확인 버튼</h3></div>
+        <p class="desc">- 하단 우측 메인 액션 버튼(진한 남색 배경, 강조)
+- 선택된 간편 인증 방식으로 로그인 설정을 확정하고 다음 단계(예: PIN 등록 또는 생체인증 등록, 혹은 가입 완료)로 진행하는 액션으로 추정됨
+- 감지된 링크/버튼 목록에 항목이 없어 실제 이동 대상(href)은 확인되지 않으며 스크린샷 기반 추정임
+- 유효성검사: 상단의 간편 인증 옵션이 선택되지 않은 상태에서 탭 시 선택을 요구하는 안내가 표시될 가능성이 있음(화면상 확인 불가)</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

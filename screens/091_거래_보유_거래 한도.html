@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거래/보유/거래 한도 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="090_%EA%B1%B0%EB%9E%98%20_%EB%B3%B4%EC%9C%A0_%EC%86%90%EC%9D%B5%20%ED%98%84%ED%99%A9.html" title="거래 /보유/손익 현황">‹ 이전</a>
+    <span>91 / 148</span>
+    <a href="092_%EA%B1%B0%EB%9E%98_%EA%B4%80%EC%8B%AC%EC%A2%85%EB%AA%A9.html" title="거래/관심종목">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>거래/보유/거래 한도</h1>
+  <p class="path">거래 / 보유 / 거래 한도</p>
+  <div class="badges">
+    <span class="badge editing">편집중</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/091_%EA%B1%B0%EB%9E%98_%EB%B3%B4%EC%9C%A0_%EA%B1%B0%EB%9E%98%20%ED%95%9C%EB%8F%84.png" alt="거래/보유/거래 한도">
+        <button type="button" class="pin" data-n="1" style="left:100%;top:67.98%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:41.33%;top:78.69%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:100.0%;top:89.9%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:100.0%;top:100%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:100.0%;top:100%" aria-label="5번 기능정의">5</button><button type="button" class="pin ai" data-n="6" style="left:7.0%;top:3.3%" aria-label="6번 기능정의">6</button><button type="button" class="pin ai" data-n="7" style="left:53.2%;top:8.6%" aria-label="7번 기능정의">7</button><button type="button" class="pin ai" data-n="8" style="left:12.9%;top:8.6%" aria-label="8번 기능정의">8</button><button type="button" class="pin ai" data-n="9" style="left:32.8%;top:8.6%" aria-label="9번 기능정의">9</button><button type="button" class="pin ai" data-n="10" style="left:21.5%;top:14.8%" aria-label="10번 기능정의">10</button><button type="button" class="pin ai" data-n="11" style="left:44.2%;top:14.8%" aria-label="11번 기능정의">11</button><button type="button" class="pin ai" data-n="12" style="left:50.0%;top:18.3%" aria-label="12번 기능정의">12</button><button type="button" class="pin ai" data-n="13" style="left:14.1%;top:26.1%" aria-label="13번 기능정의">13</button><button type="button" class="pin ai" data-n="14" style="left:50.0%;top:33.0%" aria-label="14번 기능정의">14</button><button type="button" class="pin ai" data-n="15" style="left:16.2%;top:46.7%" aria-label="15번 기능정의">15</button><button type="button" class="pin ai" data-n="16" style="left:14.1%;top:67.3%" aria-label="16번 기능정의">16</button><button type="button" class="pin ai" data-n="17" style="left:50.0%;top:93.5%" aria-label="17번 기능정의">17</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>17개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>거래한도 탭 — 계좌 게이트 없음</h3></div>
+        <p class="desc">- 다른 두 탭(주문내역·나의 수익)과 달리 이 화면은 계좌 게이트가 없어 로그인·계좌 미연결 상태에서도 0원/0%로 그려진다(알려진 제약 U-09)
+- 한도가 &#39;무제한&#39;인 계정도 화면상 0원으로 보일 수 있다(U-10, 표기 검토 필요)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>조회 기간 표시 — &#39;2026년.01~ 현재&#39;</h3></div>
+        <p class="desc">- 한도 산정 기준 기간을 안내(연초부터 현재까지)
+- 탭 진입마다 재조회되며 자동 갱신은 없다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>보유한도 게이지 — ⓘ 툴팁</h3></div>
+        <p class="desc">- &#39;보유한도&#39; 옆 ⓘ 를 누르면 3초 후 자동으로 닫히는 설명 툴팁이 뜬다
+- 현재 보유 금액(빨강, 구매 후 보유 금액 기준) / 한도 / 진행 바 / 예상 잔여 금액을 함께 보여준다</p>
+        <p class="policy">이용약관 제10조 3항: 보유 한도는 일반회원 1,000만 원 / 소득적격회원 3,000만 원이며, 구매 후 현재 보유 금액(수수료 제외) 기준으로 산정된다. 한도 초과 시 기존 보유 종목을 판매해야 추가 구매가 가능하다.</p>
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>연간거래한도 게이지</h3></div>
+        <p class="desc">- 올해 1월 1일부터 현재까지 판매한 누적 총액을 자동 계산해 표시(1년간 판매 금액 기준)
+- 예상 잔여 금액을 함께 표시</p>
+        <p class="policy">이용약관 제10조 3항: 연간거래 한도는 일반회원 4,000만 원 / 소득적격회원 8,000만 원이며, 올해 1월 1일부터 현재까지 판매한 누적 총액 기준으로 자동 계산된다.</p>
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>1일 회전율 게이지 (오늘 사용 0% / 허용 100%)</h3></div>
+        <p class="desc">- 오늘 거래한 활동량을 판매 금액 비율로 표시, 허용치는 100%
+- 100% 초과 시 다음 영업일부터 거래 가능(당일 추가 거래 불가)</p>
+        <p class="policy">이용약관 제10조 3항 및 제13조 3항: 1일 회전율은 하루 동안 판매한 금액이 현재 보유 금액의 100%를 초과할 수 없으며, 초과 시 다음 영업일부터 거래가 가능하다.</p>
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num ai">6</span><h3>뒤로가기</h3></div>
+        <p class="desc">- 좌측 상단 화살표 아이콘 버튼
+- 클릭 시 이전 화면(거래/보유 진입 전 화면)으로 이동
+- href 정보 없이 앱 내 뒤로가기 동작으로 추정됨</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-7" data-n="7">
+        <div class="spec-head"><span class="num ai">7</span><h3>거래 한도 탭 (현재 선택됨)</h3></div>
+        <p class="desc">- &#39;거래/보유&#39; 메뉴 내 3개 탭(&#39;주문내역&#39;, &#39;나의 수익&#39;, &#39;거래 한도&#39;) 중 하나
+- 현재 화면은 &#39;거래 한도&#39; 탭이 활성 상태(진한 남색 배경)로 선택되어 있음
+- 회원 등급별 보유한도·연간거래한도·1일 회전율 현황을 확인하는 화면
+- 로그인 및 증권사 계좌 연결이 완료된 회원만 접근 가능</p>
+        <p class="policy">한도(보유 금액, 연간거래 한도, 1일 회전율)는 주문 제출 시점에 시스템에서 확인하며, 거래가 체결될 때 최종 반영됩니다. 한도를 초과하는 주문은 자동 거부됩니다.</p>
+      </article>
+      
+      <article class="spec" id="spec-8" data-n="8">
+        <div class="spec-head"><span class="num ai">8</span><h3>주문내역 탭</h3></div>
+        <p class="desc">- 탭 클릭 시 주문내역(체결/미체결 등) 조회 화면으로 이동
+- href 정보가 없어 화면 내 상태 전환(탭 전환) 방식의 동적 동작으로 추정
+- 비로그인 상태에서는 이용이 제한되며, 로그인 안내가 표시될 수 있음
+- 계좌 미연결 시 계좌 연결 안내가 표시될 수 있음</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-9" data-n="9">
+        <div class="spec-head"><span class="num ai">9</span><h3>나의 수익 탭</h3></div>
+        <p class="desc">- 탭 클릭 시 회원의 투자 수익률/평가금액 조회 화면으로 이동
+- href 정보가 없어 탭 전환 방식의 동적 동작으로 추정
+- 표시되는 수익률·평가금액은 플랫폼이 이동평균법(평균 매입단가) 기준으로 자체 계산한 참고 수치로 실제 정산 금액과 차이가 발생할 수 있음</p>
+        <p class="policy">수익률과 평가금액은 소수점 이하를 절삭하여 표시되므로 실제 손익과 차이가 있을 수 있습니다. 세금 계산 및 원천징수는 증권사에서 처리합니다.</p>
+      </article>
+      
+      <article class="spec" id="spec-10" data-n="10">
+        <div class="spec-head"><span class="num ai">10</span><h3>연동 증권사 선택 뱃지</h3></div>
+        <p class="desc">- &#39;한국ST거래증권&#39; 등 연동된 계좌관리기관(증권사) 명이 표시된 뱃지형 UI
+- 여러 증권사 계좌를 동시에 연동한 경우 선택하여 해당 계좌 기준 한도 정보를 전환 조회하는 용도로 추정
+- 구매·판매 주문은 기본 거래 계좌로 설정된 계좌 기준으로만 가능</p>
+        <p class="policy">한도는 해당 증권사(한국ST거래)의 연결 계좌 합계 금액을 기준으로 적용됩니다.</p>
+      </article>
+      
+      <article class="spec" id="spec-11" data-n="11">
+        <div class="spec-head"><span class="num ai">11</span><h3>조회 연도 선택 뱃지</h3></div>
+        <p class="desc">- &#39;2026년&#39; 등 조회 기준 연도를 나타내는 뱃지형 UI
+- 연간거래한도는 해당 연도 1월 1일부터 현재까지의 누적 판매 총액 기준으로 계산되므로, 연도 전환 시 하단 &#39;연간거래한도&#39; 값이 갱신될 것으로 추정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-12" data-n="12">
+        <div class="spec-head"><span class="num ai">12</span><h3>계좌잔고 요약 카드</h3></div>
+        <p class="desc">- 연동 증권사 및 조회 연도 하단에 계좌잔고 금액(예: 59,538,164원)을 표시
+- 실제 구매·판매 가능 여부는 주문 제출 시점에 재확인됨
+- 화면에 표시되는 계좌 잔고는 마지막으로 조회된 정보이며 실시간 값과 차이가 발생할 수 있음</p>
+        <p class="policy">계좌 잔고, 한도는 마지막 주문 기준으로 표시되며, 실제 주문 시 다를 수 있어요.</p>
+      </article>
+      
+      <article class="spec" id="spec-13" data-n="13">
+        <div class="spec-head"><span class="num ai">13</span><h3>보유한도 섹션 및 도움말(?)</h3></div>
+        <p class="desc">- 제목 옆 물음표(?) 아이콘 탭 시 &#39;보유한도&#39; 용어에 대한 설명 툴팁/팝업이 뜨는 것으로 추정
+- 보유한도는 구매 후 현재 보유 금액 기준(수수료 제외)으로 산정
+- 한도 초과 시 기존 보유 종목을 판매한 후에만 추가 구매가 가능</p>
+        <p class="policy">일반 회원 보유한도: 1,000만 원 / 소득적격 회원 보유한도: 3,000만 원</p>
+      </article>
+      
+      <article class="spec" id="spec-14" data-n="14">
+        <div class="spec-head"><span class="num ai">14</span><h3>보유한도 현황 (현재 보유 / 한도 / 예상 잔여)</h3></div>
+        <p class="desc">- 좌측에 현재 보유 금액(3,497,848원, 빨간색 강조), 우측에 한도(10,000,000원) 표시
+- 하단 그라디언트 진행 바(오렌지→레드)로 한도 대비 사용률을 시각화
+- 진행 바 아래 &#39;예상 잔여&#39; 금액(6,502,152원)을 함께 표시하여 추가로 보유 가능한 금액을 안내
+- 별도 입력/클릭 동작은 없는 단순 정보 표시 요소로 추정</p>
+        <p class="policy">구매 후 현재 보유 금액 기준(수수료 제외)이며, 한도 초과 시 기존 보유 종목 판매 후 구매가 가능합니다.</p>
+      </article>
+      
+      <article class="spec" id="spec-15" data-n="15">
+        <div class="spec-head"><span class="num ai">15</span><h3>연간거래한도 섹션</h3></div>
+        <p class="desc">- 도움말(?) 아이콘 탭 시 &#39;연간거래한도&#39; 용어 설명이 뜨는 것으로 추정
+- &#39;올해 판매&#39; 누적 금액(95,800원)과 &#39;한도&#39;(40,000,000원)를 상하 대비로 표시
+- 진행 바로 사용률을 표시하고, 하단에 &#39;예상 잔여&#39; 금액(39,904,200원) 표시
+- 올해 1월 1일부터 현재까지 판매한 누적 총액을 기준으로 자동 계산됨</p>
+        <p class="policy">일반 회원 연간거래한도: 4,000만 원 / 소득적격 회원 연간거래한도: 8,000만 원</p>
+      </article>
+      
+      <article class="spec" id="spec-16" data-n="16">
+        <div class="spec-head"><span class="num ai">16</span><h3>1일 회전율 섹션</h3></div>
+        <p class="desc">- 도움말(?) 아이콘 탭 시 &#39;1일 회전율&#39; 용어 설명이 뜨는 것으로 추정
+- &#39;오늘 사용&#39; 비율(0%)과 &#39;허용&#39; 한도(100%)를 상하 대비로 표시
+- 진행 바로 오늘 거래 활동량 대비 사용률 표시, 하단에 &#39;예상 거래 가능금액&#39;(59,538,164원) 표시
+- 오늘 거래한 활동량 기준으로 계산되며, 당일 100% 초과 시 다음 영업일부터 거래 재개</p>
+        <p class="policy">일반 회원·소득적격 회원 모두 1일 회전율 100% 이하로 제한됩니다. 하루 판매 금액이 보유 금액의 100%를 초과하면 다음 영업일부터 거래가 가능합니다.</p>
+      </article>
+      
+      <article class="spec" id="spec-17" data-n="17">
+        <div class="spec-head"><span class="num ai">17</span><h3>하단 유의사항 안내문</h3></div>
+        <p class="desc">- 화면 최하단에 회색 텍스트로 표시되는 정책성 유의 문구 2줄
+- 클릭/입력 동작이 없는 순수 정보 표시 텍스트</p>
+        <p class="policy">계좌 잔고, 한도는 마지막 주문 기준으로 표시되며, 실제 주문시 다를 수 있어요. / 한도는 한국ST거래의 연결 계좌의 합계 금액을 기준으로 적용돼요.</p>
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

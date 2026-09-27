@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>회원가입 / 투자정보 입력 2 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="006_%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20_%20%ED%88%AC%EC%9E%90%EC%A0%95%EB%B3%B4%20%EC%9E%85%EB%A0%A5.html" title="회원가입 / 투자정보 입력">‹ 이전</a>
+    <span>7 / 148</span>
+    <a href="008_%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20_%20%EA%B0%80%EC%9E%85%EC%99%84%EB%A3%8C.html" title="회원가입 / 가입완료">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>회원가입 / 투자정보 입력 2</h1>
+  
+  <div class="badges">
+    <span class="badge editing">편집중</span>
+    
+    
+    
+    
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/007_%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85%20_%20%ED%88%AC%EC%9E%90%EC%A0%95%EB%B3%B4%20%EC%9E%85%EB%A0%A5%202.png" alt="회원가입 / 투자정보 입력 2">
+        <button type="button" class="pin ai" data-n="1" style="left:6.5%;top:3.3%" aria-label="1번 기능정의">1</button><button type="button" class="pin ai" data-n="2" style="left:89.0%;top:9.3%" aria-label="2번 기능정의">2</button><button type="button" class="pin ai" data-n="3" style="left:50.0%;top:19.0%" aria-label="3번 기능정의">3</button><button type="button" class="pin ai" data-n="4" style="left:87.5%;top:26.3%" aria-label="4번 기능정의">4</button><button type="button" class="pin ai" data-n="5" style="left:50.0%;top:32.0%" aria-label="5번 기능정의">5</button><button type="button" class="pin ai" data-n="6" style="left:50.0%;top:39.5%" aria-label="6번 기능정의">6</button><button type="button" class="pin ai" data-n="7" style="left:50.0%;top:51.0%" aria-label="7번 기능정의">7</button><button type="button" class="pin ai" data-n="8" style="left:50.0%;top:61.0%" aria-label="8번 기능정의">8</button><button type="button" class="pin ai" data-n="9" style="left:50.0%;top:72.0%" aria-label="9번 기능정의">9</button><button type="button" class="pin ai" data-n="10" style="left:50.0%;top:84.5%" aria-label="10번 기능정의">10</button><button type="button" class="pin ai" data-n="11" style="left:50.0%;top:96.5%" aria-label="11번 기능정의">11</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>11개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num ai">1</span><h3>뒤로가기 버튼</h3></div>
+        <p class="desc">- 화면 좌측 상단의 화살표 아이콘
+- 클릭 시 이전 단계(투자정보 입력 1)로 돌아감
+- 입력 중이던 내용은 저장되지 않을 수 있음(별도 확인 팝업 여부는 미확인)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num ai">2</span><h3>진행 단계 표시 (03/03)</h3></div>
+        <p class="desc">- 회원가입 내 투자정보 입력 절차의 마지막 단계(3단계 중 3단계)임을 나타내는 텍스트 및 진행 바
+- 사용자 조작 요소 아님, 단순 안내용 UI</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num ai">3</span><h3>화면 타이틀</h3></div>
+        <p class="desc">- &#34;투자를 위한 기본정보를 입력해주세요.&#34; 안내 문구
+- 본 화면이 투자 목적의 기본정보(주소, 국적, 자금출처, 투자목적, 직업)를 수집하는 단계임을 명시</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num ai">4</span><h3>주소검색 버튼</h3></div>
+        <p class="desc">- &#39;자택 주소&#39; 라벨 옆에 위치한 보조 버튼
+- 클릭 시 우편번호/주소 검색 레이어(다음/카카오 우편번호 서비스 등으로 추정)가 열려 주소를 검색·선택할 수 있음
+- 선택 시 하단 주소 표시 필드에 우편번호 및 도로명주소가 자동 입력되는 것으로 추정
+- 필수 입력 항목으로 보이며 미입력 시 하단 &#39;확인&#39; 버튼 제출이 제한될 수 있음(추정)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num ai">5</span><h3>자택 주소 표시 필드</h3></div>
+        <p class="desc">- 주소검색을 통해 선택된 우편번호 및 도로명주소를 표시하는 읽기전용(비활성) 입력창으로 보임
+- 예시: &#34;[07326] 서울 영등포구 국제금융로 10&#34;
+- 직접 타이핑이 아닌 주소검색 버튼을 통해서만 값이 채워지는 구조로 추정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num ai">6</span><h3>상세주소 입력창</h3></div>
+        <p class="desc">- 도로명주소 하단의 상세주소(건물명, 동/호수 등) 입력 필드
+- 현재 &#34;여의&#34;라는 텍스트가 입력 중인 상태로 캡처됨
+- 자유 텍스트 입력, 최대 글자수 등 유효성 제약은 화면상 확인 불가</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-7" data-n="7">
+        <div class="spec-head"><span class="num ai">7</span><h3>국적 선택 필드 (필수)</h3></div>
+        <p class="desc">- 라벨 &#39;국적&#39; 옆 빨간 별표(*)로 필수 입력 항목임을 표시
+- 현재 값 &#34;내국인 (대한민국)&#34;으로 기본 선택되어 있음
+- 클릭 시 국적 선택 목록(내국인/외국인 등)이 열리는 선택형(select) 필드로 추정
+- 약관상 만 19세 이상 국내 회원만 이용 가능하다는 가입 자격과 연계된 항목으로 추정</p>
+        <p class="policy">만 19세 이상 국내 회원만 서비스 이용이 가능하며, 타인 정보 도용이나 허위 정보 제출 시 가입 거부 또는 이용계약 취소 대상이 될 수 있음(참고 약관 제4조)</p>
+      </article>
+      
+      <article class="spec" id="spec-8" data-n="8">
+        <div class="spec-head"><span class="num ai">8</span><h3>자금출처 선택 필드 (필수)</h3></div>
+        <p class="desc">- 라벨 &#39;자금출처&#39; 옆 빨간 별표(*)로 필수 입력 항목임을 표시
+- 현재 값 &#34;근로소득(급여)&#34;으로 기본 선택되어 있음
+- 클릭 시 자금출처 선택 목록(근로소득, 사업소득, 금융소득 등)이 열리는 선택형 필드로 추정
+- 자본시장법상 투자자 정보 확인 절차의 일부로 보이며, 이후 투자자 성향 분석 및 소득적격회원 심사와 연계될 가능성 있음(추정)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-9" data-n="9">
+        <div class="spec-head"><span class="num ai">9</span><h3>투자목적 선택 필드 (필수)</h3></div>
+        <p class="desc">- 라벨 &#39;투자목적&#39; 옆 빨간 별표(*)로 필수 입력 항목임을 표시
+- 현재 값 &#34;저축 및 투자&#34;로 기본 선택되어 있음
+- 클릭 시 투자목적 선택 목록이 열리는 선택형 필드로 추정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-10" data-n="10">
+        <div class="spec-head"><span class="num ai">10</span><h3>직업 선택 필드 (필수)</h3></div>
+        <p class="desc">- 라벨 &#39;직업&#39; 옆 빨간 별표(*)로 필수 입력 항목임을 표시
+- 현재 값 &#34;직장인(회사원)&#34;으로 기본 선택되어 있음
+- 클릭 시 직업 선택 목록이 열리는 선택형 필드로 추정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-11" data-n="11">
+        <div class="spec-head"><span class="num ai">11</span><h3>확인 버튼</h3></div>
+        <p class="desc">- 화면 하단 전체 폭의 진한 남색 버튼, 텍스트 &#34;확인&#34;
+- 클릭 시 입력된 기본정보(주소, 국적, 자금출처, 투자목적, 직업)를 제출하고 다음 단계(회원가입 완료 또는 본인인증 등)로 이동하는 것으로 추정
+- 필수 항목(국적, 자금출처, 투자목적, 직업 및 주소)이 모두 입력되지 않으면 비활성화되거나 제출 시 오류 안내가 표시될 것으로 추정
+- 진행 단계 표시가 03/03이므로 이 단계가 투자정보 입력의 마지막이며, 제출 후 회원가입 절차가 완료되거나 다음 절차(계좌 연동 등)로 넘어갈 가능성이 있음(추정)</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

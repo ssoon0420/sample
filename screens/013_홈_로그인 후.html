@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>홈/로그인 후 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="012_%ED%99%88_%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%A0%84.html" title="홈/로그인 전">‹ 이전</a>
+    <span>13 / 148</span>
+    <a href="014_%ED%99%88_%EA%B3%84%EC%A2%8C%EC%97%B0%EA%B2%B0%20%ED%9B%84.html" title="홈/계좌연결 후">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>홈/로그인 후</h1>
+  
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/013_%ED%99%88_%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%ED%9B%84.png" alt="홈/로그인 후">
+        <button type="button" class="pin" data-n="1" style="left:77.43%;top:0.89%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:25.47%;top:3.24%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:79.8%;top:22.38%" aria-label="3번 기능정의">3</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>3개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>헤더 — 프로필칩·알림벨 (로그인 후·계좌 미연결)</h3></div>
+        <p class="desc">- 로그인 상태이므로 프로필칩이 기본 회색 아이콘 대신 닉네임 첫 글자(&#39;하&#39;)를 넣은 원형 컬러 배지로 바뀜(사진 등록 시 사진, 없으면 닉네임 첫 글자, 그것도 없으면 기본 아이콘 순)
+- 프로필칩 탭 → MY 화면으로 이동
+- 알림 벨: 로그인 상태이므로 안읽음 개수 표시(현재 0개 표시)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>계좌 연결 안내 띠</h3></div>
+        <p class="desc">- 로그인은 했으나 계좌 미연결 상태 — 3가지 상태 중 두 번째: 닉네임+계좌 연결 유도 문구가 띠 형태로 노출
+- 띠 탭 → 계좌 연결 화면(/account/connect)으로 이동
+- 연동 목록을 아직 받는 중인 구간에는 띠 자체가 숨겨진다 — 느린 네트워크에서 &#39;계좌를 연결해 주세요&#39; 문구가 잘못 스쳐 보이면 안 됨(QA 확인 포인트)
+- 계좌를 연결하면 c1084b92483f(계좌연결 후) 화면처럼 &#39;나의 자산&#39; 요약으로 바뀜</p>
+        <p class="policy">이용약관 제6조(증권사 계좌 연동 및 계좌 관리) — 계좌 연동은 회원의 CI 기준 동일인 확인 후 진행되며, 여러 증권사 계좌를 동시에 연동할 수 있다. 제2조 【회원 등급】② 일반회원(가입 단계) — 계좌 미연결 상태에서는 커뮤니티 등 기본 서비스만 이용 가능하고 구매·판매 거래는 불가.</p>
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>관심가게/ 관심종목 설정</h3></div>
+        <p class="desc">- 로그인 후 관심가게/ 관심종목 설정한 경우 채워진 아이콘으로 표시 </p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

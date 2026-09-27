@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거래 / 전체 / 종목상세 / 정보 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="023_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4.html" title="거래 / 전체">‹ 이전</a>
+    <span>24 / 148</span>
+    <a href="025_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A0%95%EB%B3%B4_%EC%98%88%EC%83%81%EB%B6%84%EB%B0%B0%EA%B8%88%20%EA%B3%84%EC%82%B0%EA%B8%B0.html" title="거래 / 전체 / 종목상세 / 정보/예상분배금 계산기">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>거래 / 전체 / 종목상세 / 정보</h1>
+  
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/024_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A0%95%EB%B3%B4.png" alt="거래 / 전체 / 종목상세 / 정보">
+        <button type="button" class="pin" data-n="1" style="left:50.94%;top:2.34%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:50.94%;top:15.19%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:50.94%;top:37.38%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:50.94%;top:46.73%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:50.94%;top:63.67%" aria-label="5번 기능정의">5</button><button type="button" class="pin" data-n="6" style="left:50.94%;top:71.85%" aria-label="6번 기능정의">6</button><button type="button" class="pin" data-n="7" style="left:50.94%;top:96.96%" aria-label="7번 기능정의">7</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>7개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>헤더 + 탭 메뉴</h3></div>
+        <p class="desc">- 상단에 뒤로가기, 종목명(&#39;안동 리모델링 1호&#39;), 현재가(5,900원)+등락률(+68.5%), 찜(♡) 아이콘
+- 하단에 정보/주문/호가/차트/내주문/커뮤니티 6개 탭, 현재 &#39;정보&#39; 탭이 밑줄로 활성 표시
+- 상단 현재가는 5초마다 자동 갱신된다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>투자 포인트</h3></div>
+        <p class="desc">- 서버 등록 마크다운 본문(5개 항목 리스트) + 혜택 카드(골드 배경, 점 목록: &#39;발효 한상 시식권&#39;, &#39;10% 할인&#39;) + 지도 카드(가게 위치 + 하단 주소 텍스트)
+- 본문이 없으면 제목까지 생략되고, 혜택 미등록 시 카드가 사라지며, 주소·좌표 중 하나라도 없으면 지도 카드가 사라진다
+- 배너 이미지가 있으면 좌우 스와이프 슬라이더 + 우하단 &#39;n/N&#39; 카운터가 뜨는데(1장이면 카운터 생략), 이 캡처에는 배너 이미지가 없다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>분배정보 + 예상분배금 계산기</h3></div>
+        <p class="desc">- 연 예상 분배율(4.92%, 서버값) / 월 예상 분배율(0.41%, 연분배율÷12를 소수 둘째자리까지 화면에서 계산) / 전월 분배금(개당 250원, 이력 없거나 0이면 &#39;-&#39;) / 분배주기(3개월)
+- 우측 [예상분배금 계산기] 버튼 → 바텀시트: 전월 분배금액(수정불가, 회색) × 수량(기본값 10, 직접 입력 가능) = 예상 총 분배금액(빨간 강조)
+- 하단에 &#39;※ 전월 분배금액 기준이므로 실제 분배금액과 차이가 있을 수 있습니다.&#39; 주의 문구</p>
+        <p class="policy">이용약관 제2조(분배금·분배율 정의), 제14조(수익률 산정 안내) — 여기 표시되는 수치는 회사가 이동평균법으로 자체 계산한 참고용이며 실제 정산 금액과 차이가 발생할 수 있음을 계산기 내 주의 문구로 고지.</p>
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>종목정보 + 문서</h3></div>
+        <p class="desc">- 기업명(가게명)/시가총액/액면가/발행수량/유통수량/상장일 6행 표
+- 등록된 PDF 문서 목록(예: audit_report_1.pdf, 문서 없으면 영역 자체가 생략)
+- 문서 행을 누르면 앱 내장 PDF 뷰어가 열린다(외부 다운로드 아님)
+- 참고: 발행·유통공시가 모두 0건인 종목은 &#39;⑤ 공시&#39; 섹션 자체가 표시되지 않는다 — 이 캡처가 그 경우</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>전월 개당 분배금 (접기/펼치기)</h3></div>
+        <p class="desc">- 기본은 &#39;전월 개당 분배금 250원&#39; 한 줄 + 화살표로 접힌 상태
+- 펼치면 분배월/개당 분배금(원)/총 분배금(원) 3열 표(최근 3개월치만)
+- 총 분배금 = 유통수량 × 개당 분배금(화면 계산)
+- 기획서상 원래 &#39;전월 확정 분배금 팝업&#39;으로 정의됐으나 실제 구현은 본문 내 접기/펼치기이므로, 본 기능정의서는 실제 구현 기준으로 작성함</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num">6</span><h3>같은 가게 종목</h3></div>
+        <p class="desc">- 같은 가게의 다른 종목 카드 목록(종목명·가격·등락 + 찜 + [주문])
+- 카드를 탭하면 그 종목 상세로 이동하며 화면이 완전히 새로 초기화된다(정보 탭·스크롤 최상단)
+- [주문] → 그 종목 주문 탭으로 바로 이동
+- 찜 토글은 로그인이 필요, 나머지 열람은 비로그인도 가능
+- 더보기 없이 서버가 내려준 전체 목록이 그대로 표시된다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-7" data-n="7">
+        <div class="spec-head"><span class="num">7</span><h3>하단 CTA (판매하기 / 구매하기)</h3></div>
+        <p class="desc">- 화면 최하단 고정 버튼 2개 — [판매하기](파랑)/[구매하기](빨강)
+- 누르면 해당 방향 주문 탭으로 이동하며, 제출 시점에 로그인·계좌 연결 여부가 확인된다(정보 탭 열람 자체는 비로그인도 가능)</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

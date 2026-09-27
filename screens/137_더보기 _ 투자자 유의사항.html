@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>더보기 / 투자자 유의사항 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="136_%EB%8D%94%EB%B3%B4%EA%B8%B0_%EA%B3%A0%EA%B0%9D%EC%84%BC%ED%84%B0_1_1%20%EB%AC%B8%EC%9D%98_%ED%8C%9D%EC%97%85.html" title="더보기/고객센터/1:1 문의_팝업">‹ 이전</a>
+    <span>137 / 148</span>
+    <a href="138_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0.html" title="거래 / 전체 / 종목상세 / 커뮤니티">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>더보기 / 투자자 유의사항</h1>
+  
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/137_%EB%8D%94%EB%B3%B4%EA%B8%B0%20_%20%ED%88%AC%EC%9E%90%EC%9E%90%20%EC%9C%A0%EC%9D%98%EC%82%AC%ED%95%AD.png" alt="더보기 / 투자자 유의사항">
+        <button type="button" class="pin" data-n="1" style="left:20.69%;top:10.75%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:20.69%;top:15.0%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:20.69%;top:23.5%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:20.69%;top:32.5%" aria-label="4번 기능정의">4</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>4개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>버전 드롭다운</h3></div>
+        <p class="desc">- 상단 드롭다운에서 `투자자 유의사항 {버전} (YY.MM.DD~)` 형식으로 버전 선택 — 기본값은 최신 버전(v1.0)
+- 정책 목록에는 노출되지 않고 더보기 메뉴 &#39;투자자 유의사항&#39; 항목과 푸터 링크로만 진입한다</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>안내 목적 및 법적 근거</h3></div>
+        <p class="desc">- 금융소비자 보호에 관한 법률 제19조(설명의무), 자본시장과 금융투자업에 관한 법률 제47조(설명의무)에 따라 투자자에게 상품 구조와 위험을 설명하기 위한 법정 고지 화면</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>제1조 — 투자계약증권의 법적 성격 및 원금손실 위험</h3></div>
+        <p class="desc">- 본 플랫폼 유통 상품은 자본시장법 제4조 제6항에 따른 투자계약증권으로, 발행사의 공동사업 성과에 따라 손익이 귀속되는 구조임을 고지
+- 발행사 사업 성과에 따라 투자 원금의 전부 또는 일부 손실이 발생할 수 있고, 손실은 전적으로 투자자 본인 귀속임을 명시</p>
+        <p class="policy">서비스이용약관 제2조(정의) ②: &#34;투자계약증권 자본시장법 제4조 제6항에 따라 특정 투자자가 타인과의 공동사업에 금전을 투자하고 그 결과에 따른 손익을 귀속받는 계약상의 권리가 표시된 증권을 말한다. 본 서비스는 이미 발행이 완료된 투자계약증권의 유통(2차 거래)만을 지원한다.&#34; — 이 화면의 투자계약증권 정의·손익귀속 설명과 동일한 법적 근거를 재확인 고지</p>
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>예금자보호법 미적용 및 발행사 도산 위험</h3></div>
+        <p class="desc">- 은행 예금이 아니므로 예금자보호법 보호 대상이 아니며, 회사·계좌관리기관(증권사)이 원금이나 고정 수익을 보장하지 않음을 고지
+- 발행사 파산·청산 시 원금 전부 또는 일부를 회수하지 못할 수 있으나, 투자계약증권은 전자증권법에 따라 전자등록부에 등록되므로 회사·계좌관리기관의 파산·도산과 무관하게 투자자의 권리(보유 사실)는 유지됨을 안내</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

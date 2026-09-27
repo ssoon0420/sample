@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로그인/다른방법으로로그인 · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="010_%EB%A1%9C%EA%B7%B8%EC%9D%B8.html" title="로그인">‹ 이전</a>
+    <span>11 / 148</span>
+    <a href="012_%ED%99%88_%EB%A1%9C%EA%B7%B8%EC%9D%B8%20%EC%A0%84.html" title="홈/로그인 전">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>로그인/다른방법으로로그인</h1>
+  
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/011_%EB%A1%9C%EA%B7%B8%EC%9D%B8_%EB%8B%A4%EB%A5%B8%EB%B0%A9%EB%B2%95%EC%9C%BC%EB%A1%9C%EB%A1%9C%EA%B7%B8%EC%9D%B8.png" alt="로그인/다른방법으로로그인">
+        <button type="button" class="pin" data-n="1" style="left:50.13%;top:25.03%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:50.13%;top:72.22%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:50.13%;top:76.6%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:26.81%;top:83.23%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:26.81%;top:91.36%" aria-label="5번 기능정의">5</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>5개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>배경 로그인 화면(딤 처리)</h3></div>
+        <p class="desc">- 이전 아이디/비밀번호 로그인 화면이 어둡게 딤 처리된 채 뒤에 깔려 있고 바텀시트가 그 위에 겹쳐 뜬다 — 화면 전환이 아니라 오버레이 방식
+- 딤 영역을 탭하면 시트가 닫히고 원래 로그인 화면으로 복귀할 것으로 보인다(캡처만으로 확정 불가)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>시트 핸들</h3></div>
+        <p class="desc">바텀시트 상단의 드래그 인디케이터 — 아래로 스와이프하면 시트를 닫을 수 있다는 조작 힌트</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>안내 타이틀</h3></div>
+        <p class="desc">&#34;로그인 방법을 선택하세요&#34; — 아이디/비밀번호 외에 제공되는 로그인 수단을 고르라는 안내</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>간편 인증으로 로그인</h3></div>
+        <p class="desc">- 좌측 아이콘 + &#39;간편 인증으로 로그인&#39; 텍스트 항목
+- 탭하면 사전 등록된 간편 비밀번호(PIN) 입력 화면으로 이동해 숫자 PIN만으로 로그인하는 플로우로 이어질 것으로 보인다(본 캡처 범위 밖)</p>
+        <p class="policy">이용약관 제3조③ 간편 비밀번호(PIN)는 간편 비밀번호 서비스 이용 및 거래 승인을 위해 회원이 직접 설정한 6자리 숫자 비밀번호로 정의된다.</p>
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>생체 인증으로 로그인</h3></div>
+        <p class="desc">- 좌측 지문/생체 아이콘 + &#39;생체 인증으로 로그인&#39; 텍스트 항목
+- 탭하면 기기에 등록된 지문·Face ID 등 생체 인증을 호출하고, 인증에 성공하면 로그인 처리되는 플로우로 보인다
+- 기기에 생체인증이 등록되어 있지 않은 경우의 처리(비활성/등록 안내 등)는 이 캡처만으로 확정할 수 없다</p>
+        <p class="policy">이용약관 제3조④ 생체인증은 회원의 지문·안면 등 기기에 등록된 생체 정보를 활용해 로그인하는 인증 방식으로 정의되며, 제5조④에 따라 기기를 변경하거나 앱을 재설치한 경우 본인인증을 완료해야 신규 기기로 재등록해 사용할 수 있다.</p>
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>거래 / 전체 / 종목상세 / 주문 (간편) · 한국ST거래 IS</title>
+<style>:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e2e5ea; --text:#1f2430; --muted:#6b7280;
+  --primary:#3b5bfd; --pin:#e53935; --pin-ai:#1565c0; --warn-bg:#fff3e0; --warn:#b3541e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:"Pretendard","Malgun Gothic","Noto Sans KR",-apple-system,sans-serif;font-size:14px;line-height:1.6}
+a{color:var(--primary);text-decoration:none}
+a:hover{text-decoration:underline}
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;gap:16px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.top .crumb{color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pager{display:flex;gap:14px;align-items:center;color:var(--muted);white-space:nowrap}
+.wrap{max-width:1180px;margin:0 auto;padding:24px 20px 80px}
+h1{font-size:20px;margin:0 0 4px}
+.path{margin:0 0 8px;color:var(--muted);font-size:13px}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+.badge{display:inline-block;padding:1px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eef0f3;color:var(--muted)}
+.badge.editing{background:#fff3d6;color:#9a6b00}
+.badge.confirmed{background:#e2f6ea;color:#1e9e5a}
+.badge.popup{background:#ffe6e6;color:var(--pin)}
+.cols{display:flex;gap:24px;align-items:flex-start}
+.shot{margin:0;flex:0 0 460px;max-width:460px}
+.web .shot{flex-basis:640px;max-width:640px}
+.canvas{position:relative;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#f0f1f4}
+.canvas img{display:block;width:100%;height:auto}
+.noimg{padding:60px 0;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:8px;background:var(--panel)}
+.pin{position:absolute;width:26px;height:26px;padding:0;border-radius:50%;border:2px solid #fff;
+  background:var(--pin);color:#fff;font:700 12px/1 inherit;font-family:inherit;cursor:pointer;
+  transform:translate(-50%,-50%);box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.pin.ai{background:var(--pin-ai)}
+.pin.on{outline:3px solid #ffeb3b;z-index:2}
+.specs{flex:1;min-width:0}
+.specs h2{font-size:16px;margin:0 0 12px}
+.specs h2 small{color:var(--muted);font-weight:400}
+.spec{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.spec.on{border-color:var(--primary);box-shadow:0 0 0 2px #e3e8ff}
+.spec-head{display:flex;align-items:center;gap:8px}
+.spec-head h3{font-size:14px;margin:0}
+.num{flex:0 0 22px;height:22px;border-radius:50%;background:var(--pin);color:#fff;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.num.ai{background:var(--pin-ai)}
+.desc{margin:8px 0 0;white-space:pre-wrap;word-break:break-word}
+.policy{margin:8px 0 0;padding:6px 10px;border-radius:6px;background:var(--warn-bg);color:var(--warn);font-size:13px;white-space:pre-wrap}
+.empty{color:var(--muted)}
+/* index */
+.meta{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin:6px 0 16px}
+.filter{width:100%;max-width:360px;padding:8px 11px;border:1px solid var(--line);border-radius:6px;font:inherit;margin-bottom:14px}
+.list{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:9px 14px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:none}
+.row .no{flex:0 0 36px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row .name{flex:1;min-width:0}
+.row .name small{display:block;color:var(--muted);font-size:12px}
+.row .cnt{color:var(--muted);font-size:12px;white-space:nowrap}
+@media (max-width:860px){
+  .cols{flex-direction:column}
+  .shot,.web .shot{flex-basis:auto;max-width:100%;width:100%}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a href="../index.html">← 전체 목록</a>
+  <span class="crumb">한국ST거래 IS</span>
+  <nav class="pager">
+    <a href="029_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A0%95%EB%B3%B4%20_%20%EC%9C%A0%ED%86%B5%EA%B3%B5%EC%8B%9C%20%EC%83%81%EC%84%B8.html" title="거래 / 전체 / 종목상세 / 정보 &gt; 유통공시 상세">‹ 이전</a>
+    <span>30 / 148</span>
+    <a href="031_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A3%BC%EB%AC%B8%20%28%EA%B0%84%ED%8E%B8%29%20_%20%EA%B5%AC%EB%A7%A4%20_%20%EA%B5%AC%EB%A7%A4%20%ED%9D%AC%EB%A7%9D%EA%B0%80.html" title="거래 / 전체 / 종목상세 / 주문 (간편) / 구매 / 구매 희망가">다음 ›</a>
+  </nav>
+</header>
+<main class="wrap mobile">
+  <h1>거래 / 전체 / 종목상세 / 주문 (간편)</h1>
+  
+  <div class="badges">
+    <span class="badge draft">초안</span>
+    
+    
+    
+    <span class="badge">로그인 후</span>
+  </div>
+  <div class="cols">
+    <figure class="shot">
+      
+      <div class="canvas">
+        <img src="../images/030_%EA%B1%B0%EB%9E%98%20_%20%EC%A0%84%EC%B2%B4%20_%20%EC%A2%85%EB%AA%A9%EC%83%81%EC%84%B8%20_%20%EC%A3%BC%EB%AC%B8%20%28%EA%B0%84%ED%8E%B8%29.png" alt="거래 / 전체 / 종목상세 / 주문 (간편)">
+        <button type="button" class="pin" data-n="1" style="left:49.87%;top:5.05%" aria-label="1번 기능정의">1</button><button type="button" class="pin" data-n="2" style="left:49.87%;top:9.98%" aria-label="2번 기능정의">2</button><button type="button" class="pin" data-n="3" style="left:49.87%;top:17.0%" aria-label="3번 기능정의">3</button><button type="button" class="pin" data-n="4" style="left:49.87%;top:26.97%" aria-label="4번 기능정의">4</button><button type="button" class="pin" data-n="5" style="left:49.87%;top:40.02%" aria-label="5번 기능정의">5</button><button type="button" class="pin" data-n="6" style="left:49.87%;top:65.02%" aria-label="6번 기능정의">6</button><button type="button" class="pin" data-n="7" style="left:49.87%;top:96.06%" aria-label="7번 기능정의">7</button>
+      </div>
+      
+    </figure>
+    <section class="specs">
+      <h2>기능정의 <small>7개</small></h2>
+      
+      <article class="spec" id="spec-1" data-n="1">
+        <div class="spec-head"><span class="num">1</span><h3>헤더 — 종목 요약 · 모드전환 · 찜</h3></div>
+        <p class="desc">- 종목명(전주 리모델링 1호 (B증권)) · 현재가 5,000원 · 등락률 0.0% 축소 요약이 헤더 중앙에 표시
+- 현재가는 5초 주기로 자동 갱신(숫자 굴림 애니메이션)
+- 우측 아이콘: 간편↔일반 모드 전환(막대 아이콘) · 찜(♡, 로그인 필요)</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-2" data-n="2">
+        <div class="spec-head"><span class="num">2</span><h3>탭바</h3></div>
+        <p class="desc">- 정보 / 주문 / 호가 / 차트 / 내주문 / 커뮤니티 6개 탭, 현재 화면은 &#34;주문&#34; 탭 선택 상태(밑줄 표시)
+- 내주문 탭만 로그인(+계좌연결) 필요, 나머지는 비로그인 열람 가능</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-3" data-n="3">
+        <div class="spec-head"><span class="num">3</span><h3>구매/판매/대기 세그먼트</h3></div>
+        <p class="desc">- 3분할 토글: 구매(빨강) / 판매(파랑) / 대기(미체결 목록)
+- 이 화면은 &#34;구매&#34; 선택 상태
+- 색상은 한국 금융 관습(상승·매수=빨강, 하락·매도=파랑)을 따름</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-4" data-n="4">
+        <div class="spec-head"><span class="num">4</span><h3>구매 희망가 입력</h3></div>
+        <p class="desc">- &#34;AI매칭&#34; 텍스트 링크 + ⓘ 툴팁이 라벨 옆에 배치 — 누르면 AI매칭 모드(직접 가격 미지정)로 전환
+- 값(5,000원)은 화면 진입 시 최신 시세로 자동 채워짐, +/- 버튼으로 조정
+- 입력 중에는 시세가 갱신돼도 값이 바뀌지 않음(사용자 입력 보호)</p>
+        <p class="policy">지정가 주문만 가능하며 호가 단위는 자동 보정됨(제12조)</p>
+      </article>
+      
+      <article class="spec" id="spec-5" data-n="5">
+        <div class="spec-head"><span class="num">5</span><h3>수량 입력</h3></div>
+        <p class="desc">- 미입력 시 placeholder &#34;몇개를 구매할까요?&#34; 표시
+- 하단에 &#34;주문가능 {금액}원 · 최대 {개수}개 ⓘ&#34; 안내 — 예수금 중 잠기지 않은 가용 금액 기준으로 추정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-6" data-n="6">
+        <div class="spec-head"><span class="num">6</span><h3>숫자 키패드</h3></div>
+        <p class="desc">- 1~9 · 0 · 초기화(전체 삭제) · 삭제(⌫) 로 수량 입력
+- 가격은 이 키패드가 아닌 희망가 필드의 +/- 버튼으로만 조정</p>
+        
+      </article>
+      
+      <article class="spec" id="spec-7" data-n="7">
+        <div class="spec-head"><span class="num">7</span><h3>하단 CTA — 호가 / 구매하기</h3></div>
+        <p class="desc">- [호가]: 호가창으로 진입(가격 참고·선택)
+- [구매하기]: 수량 미입력 시 옅은 색으로 비활성 표시, 입력 완료 시 진한 빨강으로 활성화
+- 누르면 거래시간→로그인→계좌연결→거래정지→투자성향→소득적격→틱보정→한도 순 게이트를 지나 확인 팝업으로 이동</p>
+        
+      </article>
+      
+    </section>
+  </div>
+</main>
+<script>
+(function () {
+  var pins = document.querySelectorAll('.pin'), specs = document.querySelectorAll('.spec');
+  function mark(n, on) {
+    pins.forEach(function (p) { if (p.dataset.n === n) p.classList.toggle('on', on); });
+    specs.forEach(function (s) { if (s.dataset.n === n) s.classList.toggle('on', on); });
+  }
+  pins.forEach(function (p) {
+    p.addEventListener('click', function () {
+      var s = document.getElementById('spec-' + p.dataset.n);
+      if (s) s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+    p.addEventListener('mouseenter', function () { mark(p.dataset.n, true); });
+    p.addEventListener('mouseleave', function () { mark(p.dataset.n, false); });
+  });
+  specs.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { mark(s.dataset.n, true); });
+    s.addEventListener('mouseleave', function () { mark(s.dataset.n, false); });
+  });
+})();
+</script>
+</body>
+</html>
